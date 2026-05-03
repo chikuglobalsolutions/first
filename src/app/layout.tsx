@@ -5,13 +5,13 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PromptEmpire — 500 AI Business Prompts That Work While You Sleep",
+  title: "Chiku Global Solutions LLC — Digital Products & AI Services",
   description:
-    "Stop staring at a blank screen. 500 battle-tested AI prompts for freelancers, entrepreneurs, and side hustlers. Buy once, use forever.",
-  keywords: ["AI prompts", "ChatGPT prompts", "freelancer tools", "passive income", "AI business"],
+    "Multi-brand digital business. PromptEmpire (AI prompts), Chiku Fit (fitness guides), and Dental AI Agency — all under Chiku Global Solutions LLC.",
+  keywords: ["Chiku Global Solutions", "AI prompts", "digital products", "fitness guides", "dental AI agency"],
   openGraph: {
-    title: "PromptEmpire — 500 AI Business Prompts",
-    description: "Stop staring at a blank screen. 500 battle-tested AI prompts — buy once, use forever.",
+    title: "Chiku Global Solutions LLC",
+    description: "Digital products and AI services. PromptEmpire · Chiku Fit · Dental AI Agency.",
     type: "website",
   },
 };

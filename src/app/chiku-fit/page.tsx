@@ -223,11 +223,21 @@ export default function ChikuFitPage() {
 
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-white/5 text-center text-xs text-gray-600">
-        <p>© {new Date().getFullYear()} Chiku Fit by Chiku Global Solutions LLC</p>
+        <p>
+          <span className="text-gray-400 font-semibold">Chiku Fit</span>
+          {" · "}A product of{" "}
+          <Link href="/" className="text-gray-400 hover:text-white font-semibold transition-colors">
+            Chiku Global Solutions LLC
+          </Link>
+          {" (Wyoming)"}
+        </p>
         <p className="mt-1">
-          Questions? <a href="mailto:chikuglobalsolutions@gmail.com" className="hover:text-gray-400">chikuglobalsolutions@gmail.com</a>
+          Questions?{" "}
+          <a href="mailto:chikuglobalsolutions@gmail.com" className="hover:text-gray-400">
+            chikuglobalsolutions@gmail.com
+          </a>
           {" · "}
-          <Link href="/" className="hover:text-gray-400">PromptEmpire</Link>
+          <Link href="/promptempire" className="hover:text-gray-400">PromptEmpire</Link>
         </p>
       </footer>
     </main>
