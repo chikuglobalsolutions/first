@@ -5,13 +5,13 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "QRFlow – Smart QR Codes That Work For You",
+  title: "PromptEmpire — 500 AI Business Prompts That Work While You Sleep",
   description:
-    "Generate, track, and manage QR codes with real-time analytics. Start free, upgrade when you grow.",
-  keywords: ["QR code generator", "QR analytics", "dynamic QR codes", "free QR code"],
+    "Stop staring at a blank screen. 500 battle-tested AI prompts for freelancers, entrepreneurs, and side hustlers. Buy once, use forever.",
+  keywords: ["AI prompts", "ChatGPT prompts", "freelancer tools", "passive income", "AI business"],
   openGraph: {
-    title: "QRFlow – Smart QR Codes That Work For You",
-    description: "Generate trackable QR codes with analytics. Free plan available.",
+    title: "PromptEmpire — 500 AI Business Prompts",
+    description: "Stop staring at a blank screen. 500 battle-tested AI prompts — buy once, use forever.",
     type: "website",
   },
 };
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-white text-gray-900 antialiased`}>{children}</body>
+      <body className={`${inter.className} bg-gray-950 text-white antialiased`}>{children}</body>
     </html>
   );
 }
