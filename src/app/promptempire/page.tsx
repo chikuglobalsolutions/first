@@ -1,4 +1,16 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "PromptEmpire — 500 AI Business Prompts That Work While You Sleep",
+  description:
+    "Stop staring at a blank screen. 500 battle-tested AI prompts for freelancers, entrepreneurs, and side hustlers. Cold emails, sales pages, SOPs — buy once, use forever.",
+  openGraph: {
+    title: "PromptEmpire — 500 AI Business Prompts",
+    description: "500 battle-tested AI prompts. Works with free ChatGPT. Buy once, use forever.",
+    type: "website",
+  },
+};
 
 const STRIPE_LINKS = {
   prompts: "https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh",
