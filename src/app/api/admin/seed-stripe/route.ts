@@ -231,10 +231,71 @@ export async function POST(request: Request) {
   });
 }
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const token = searchParams.get("token") || "";
+  const expected = process.env.ADMIN_SEED_TOKEN || "";
+
+  // If token provided, run the seed (browser-friendly)
+  if (token && expected && token === expected) {
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
+    if (!stripeKey) {
+      return NextResponse.json({ error: "STRIPE_SECRET_KEY not set" }, { status: 500 });
+    }
+    const stripe = new Stripe(stripeKey, { apiVersion: "2025-02-24.acacia" });
+    const existingProducts = await stripe.products.list({ limit: 100, active: true });
+    const existingByNameLower = new Map(existingProducts.data.map((p) => [p.name.trim().toLowerCase(), p]));
+    const results: SeedResult[] = [];
+
+    for (const item of CATALOG) {
+      let product = existingByNameLower.get(item.name.trim().toLowerCase());
+      let created = false;
+      if (!product) {
+        product = await stripe.products.create({
+          name: item.name,
+          description: item.description,
+          metadata: item.metadata as Record<string, string>,
+        });
+        created = true;
+      }
+      const currentPrices = await stripe.prices.list({ product: product.id, active: true, limit: 50 });
+      const desiredPriceIds: { id: string; nickname: string; amount: number; recurring: string | null }[] = [];
+      for (const priceDef of item.prices) {
+        let match = currentPrices.data.find((p) => {
+          const sameCurrency = p.currency === priceDef.currency;
+          const sameAmount = p.unit_amount === priceDef.amount;
+          const sameRecurring =
+            (priceDef.recurring === null && !p.recurring) ||
+            (priceDef.recurring !== null && p.recurring?.interval === priceDef.recurring);
+          return sameCurrency && sameAmount && sameRecurring;
+        });
+        if (!match) {
+          const params: Stripe.PriceCreateParams = {
+            product: product.id,
+            currency: priceDef.currency,
+            unit_amount: priceDef.amount,
+            nickname: priceDef.nickname,
+            tax_behavior: "exclusive",
+          };
+          if (priceDef.recurring) {
+            params.recurring = { interval: priceDef.recurring as "month" | "year" };
+          }
+          match = await stripe.prices.create(params);
+        }
+        desiredPriceIds.push({ id: match.id, nickname: priceDef.nickname, amount: priceDef.amount, recurring: priceDef.recurring });
+      }
+      results.push({ product: item.name, productId: product.id, prices: desiredPriceIds, created });
+    }
+
+    return NextResponse.json({
+      ok: true,
+      summary: { total: results.length, created: results.filter((r) => r.created).length, existing: results.filter((r) => !r.created).length },
+      results,
+    });
+  }
+
   return NextResponse.json({
-    info:
-      "POST with Authorization: Bearer <ADMIN_SEED_TOKEN> to seed the Stripe catalog. Idempotent — safe to run multiple times.",
+    info: "POST with Authorization: Bearer <ADMIN_SEED_TOKEN> to seed the Stripe catalog. Or GET with ?token=<ADMIN_SEED_TOKEN> to seed from a browser. Idempotent — safe to run multiple times.",
     products: CATALOG.map((c) => ({
       name: c.name,
       prices: c.prices.map((p) => `${p.nickname}${p.recurring ? ` /${p.recurring}` : ""}`),
