@@ -40,18 +40,17 @@ const BRANDS = [
     items: ["8-Week Mass Accelerator", "Broke Bulk Meal Plan", "Complete Bulking Bundle"],
   },
   {
-    emoji: "🦷",
-    name: "Dental AI Agency",
+    emoji: "🤖",
+    name: "Chiku AI Systems",
     tag: "B2B Retainer",
     tagColor: "text-sky-400",
     tagBg: "bg-sky-500/10 border-sky-500/20",
     cardBorder: "hover:border-sky-500/40",
-    desc: "AI-powered growth systems for dental practices. Automated patient follow-ups, review generation, and booking optimization — billed as a monthly retainer.",
-    price: "From $1,497/mo",
-    cta: "Learn More",
-    href: "https://chiku-global-solutions.netlify.app",
-    external: true,
-    items: ["Starter · $1,497 + $297/mo", "Growth · $2,497 + $497/mo", "Premium · $4,997 + $997/mo"],
+    desc: "Done-for-you AI growth systems for any business. Automated follow-ups, review generation, booking optimization, and AI sales assistants — built for your specific workflow.",
+    price: "From $1,497 setup",
+    cta: "Apply Now",
+    href: "/ai-systems",
+    items: ["Lead follow-up automation", "Review generation system", "Booking optimization", "AI sales assistant"],
   },
 ];
 
@@ -75,6 +74,7 @@ export default function Home() {
           <div className="flex items-center gap-5 text-sm">
             <Link href="/promptempire" className="text-gray-400 hover:text-white transition-colors font-medium hidden sm:block">PromptEmpire</Link>
             <Link href="/chiku-fit" className="text-gray-400 hover:text-white transition-colors font-medium hidden sm:block">Chiku Fit</Link>
+            <Link href="/ai-systems" className="text-gray-400 hover:text-white transition-colors font-medium hidden lg:block">AI Systems</Link>
             <a
               href="mailto:chikuglobalsolutions@gmail.com"
               className="text-xs font-semibold border border-white/20 hover:border-white/40 text-white px-4 py-2 rounded-lg transition-colors"
@@ -177,23 +177,12 @@ export default function Home() {
 
                 <div className="flex items-center justify-between mt-auto pt-5 border-t border-white/5">
                   <span className="text-sm font-semibold text-white">{brand.price}</span>
-                  {brand.external ? (
-                    <a
-                      href={brand.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`text-sm font-bold transition-colors ${brand.tagColor} hover:opacity-80`}
-                    >
-                      {brand.cta} →
-                    </a>
-                  ) : (
-                    <Link
-                      href={brand.href}
-                      className={`text-sm font-bold transition-colors ${brand.tagColor} hover:opacity-80`}
-                    >
-                      {brand.cta} →
-                    </Link>
-                  )}
+                  <Link
+                    href={brand.href}
+                    className={`text-sm font-bold transition-colors ${brand.tagColor} hover:opacity-80`}
+                  >
+                    {brand.cta} →
+                  </Link>
                 </div>
               </div>
             ))}
@@ -267,7 +256,7 @@ export default function Home() {
           <div className="flex gap-6">
             <Link href="/promptempire" className="hover:text-gray-400 transition-colors">PromptEmpire</Link>
             <Link href="/chiku-fit" className="hover:text-gray-400 transition-colors">Chiku Fit</Link>
-            <a href="https://chiku-global-solutions.netlify.app" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">Dental Agency</a>
+            <Link href="/ai-systems" className="hover:text-gray-400 transition-colors">AI Systems</Link>
           </div>
           <p>© {new Date().getFullYear()} Chiku Global Solutions LLC</p>
         </div>
