@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Redirect bare /chiku-fit to the Next.js page
+[[redirects]]
+  from = "/chiku-fit"
+  to = "/chiku-fit"
+  status = 200
+
+# Health check
+[[redirects]]
+  from = "/health"
+  to = "/api/health"
+  status = 200
