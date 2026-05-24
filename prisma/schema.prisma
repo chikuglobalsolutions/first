@@ -77,3 +77,21 @@ model ScanLog {
   qrCode    QRCode   @relation(fields: [qrCodeId], references: [id], onDelete: Cascade)
   scannedAt DateTime @default(now())
 }
+
+model IntakeSubmission {
+  id              String   @id @default(cuid())
+  businessName    String
+  businessType    String
+  contactName     String
+  contactEmail    String
+  contactPhone    String?
+  monthlyRevenue  String?
+  teamSize        String?
+  currentChallenge String
+  goalsIn90Days   String
+  budgetRange     String?
+  preferredPlan   String?
+  source          String?  @default("ai-systems-intake")
+  status          String   @default("new")
+  createdAt       DateTime @default(now())
+}
