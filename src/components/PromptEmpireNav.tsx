@@ -4,6 +4,7 @@ const SUB_LINKS = [
   { href: "/promptempire", label: "Overview" },
   { href: "/promptempire/preview", label: "Free Preview" },
   { href: "/promptempire/categories", label: "Categories" },
+  { href: "/promptempire/blog", label: "Blog" },
   { href: "/promptempire/about", label: "About" },
   { href: "/promptempire/faq", label: "FAQ" },
 ];
@@ -72,6 +73,7 @@ export function PromptEmpireFooter() {
           <Link href="/promptempire" className="hover:text-gray-400 transition-colors">Overview</Link>
           <Link href="/promptempire/preview" className="hover:text-gray-400 transition-colors">Preview</Link>
           <Link href="/promptempire/categories" className="hover:text-gray-400 transition-colors">Categories</Link>
+          <Link href="/promptempire/blog" className="hover:text-gray-400 transition-colors">Blog</Link>
           <Link href="/promptempire/about" className="hover:text-gray-400 transition-colors">About</Link>
           <Link href="/promptempire/faq" className="hover:text-gray-400 transition-colors">FAQ</Link>
           <Link href="/contact" className="hover:text-gray-400 transition-colors">Contact</Link>
