@@ -112,13 +112,24 @@ Steps:
 
 Use when we need to grow the email list more than we need direct sales today.
 
-Steps:
+Lead capture is already wired:
+- `/api/leads` (POST) — accepts `{ email, source, context? }`, persists to the `Lead`
+  Prisma model. Always logs to console as a backup, so a missing DB never silently
+  drops a lead.
+- `<LeadMagnetForm />` in `src/components/LeadMagnetForm.tsx` — drop-in client component
+  for any page; props `source` + `context` for attribution.
+- `Lead` model in `prisma/schema.prisma` — **requires `npm run db:push` against prod
+  the first time it ships** so the table exists.
+
+Steps to add a new magnet:
 
 1. Pick a high-utility, narrow asset (e.g. "10 cold email prompts that booked replies last
-   month", "30-day content calendar PDF", "freelancer pricing calculator").
+   month", "freelancer pricing calculator", "30-day content calendar PDF").
 2. Generate the PDF or template. Store in `public/downloads/`.
-3. Add an opt-in CTA to the most-trafficked page (currently `/promptempire/preview`).
-4. Wire it to `/api/leads` (build the route if it doesn't exist; persist email + source).
+3. Drop a `<LeadMagnetForm />` on the page where intent is highest. Use a unique `source`
+   string so attribution is clean in `marketing/_LOG.md`.
+4. Update `/api/leads` `downloadUrl` to point to the new magnet if it should replace the
+   default magnet, OR make `downloadUrl` source-aware (one PDF per source).
 5. Write the welcome email + the 3-touch nurture sequence in `marketing/NURTURE-[name].md`.
 
 ## Refill the queue

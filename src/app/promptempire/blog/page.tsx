@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PromptEmpireNav, PromptEmpireFooter } from "@/components/PromptEmpireNav";
+import { LeadMagnetForm } from "@/components/LeadMagnetForm";
 import { POSTS, readingMinutes } from "@/lib/promptempire-posts";
 
 export const metadata: Metadata = {
@@ -60,7 +61,19 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
-      <section className="py-16 px-5 bg-white/[0.015] border-y border-white/5 text-center">
+      <section className="py-16 px-5 bg-white/[0.015] border-y border-white/5">
+        <div className="max-w-xl mx-auto">
+          <LeadMagnetForm
+            source="promptempire-blog-index"
+            context="blog index bottom CTA"
+            headline="Want next week's playbook in your inbox?"
+            sub="One email per week with the highest-converting prompt of the week — and the 30-Day Content Machine PDF in your first email."
+            cta="Send me the playbook"
+          />
+        </div>
+      </section>
+
+      <section className="py-16 px-5 text-center">
         <div className="max-w-xl mx-auto">
           <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-4">Skip the reading list</p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">

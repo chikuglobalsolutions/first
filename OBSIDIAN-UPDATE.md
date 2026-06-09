@@ -26,6 +26,13 @@
 - [ ] Go live at your domain
 - [ ] Post Reddit content from `PromptEmpire/REDDIT-POSTS-READY.md`
 
+## 🧱 PR #5 — Daily push (2026-06-09) deploy notes
+- [ ] Merge PR #5 (`claude/funny-babbage-vhzvw4`)
+- [ ] Run `npm run db:push` against production once — adds the new `Lead` table that
+      `/api/leads` writes to (capture for the lead-magnet opt-in forms)
+- [ ] Confirm `/api/leads` returns `{ ok: true, downloadUrl }` on a test POST
+- [ ] Smoke test the opt-in widget on `/promptempire/preview` and `/promptempire/blog`
+
 ## 🔴 Blockers
 - Gumroad checkout URLs missing for Chiku Fit products (add them to the storefront once created)
 - PromptEmpire product delivery page needs Google Drive link added

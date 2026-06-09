@@ -78,6 +78,20 @@ model ScanLog {
   scannedAt DateTime @default(now())
 }
 
+model Lead {
+  id        String   @id @default(cuid())
+  email     String
+  source    String   @default("promptempire")
+  /// Free-form note for which CTA / page captured this lead.
+  context   String?
+  /// User agent at capture time (lightweight bot filtering / debugging).
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([source])
+}
+
 model IntakeSubmission {
   id              String   @id @default(cuid())
   businessName    String
