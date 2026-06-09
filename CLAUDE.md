@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Marketing/growth work:** see [`MARKETING.md`](./MARKETING.md) — the single source of truth
+> for marketing across all brands (daily routine, outreach log, content log, metrics, and a
+> compounding "Playbook & Learnings" section). Ready-to-use content drafts live in
+> `marketing/content/`. Keep `MARKETING.md` updated as new info and better tactics are found.
+
 ## Commands
 
 ```bash
