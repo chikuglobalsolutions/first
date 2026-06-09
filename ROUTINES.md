@@ -13,9 +13,12 @@ When the operator says any of these, run the matching routine:
 | "run the daily push" / "daily push" | [Daily push](#daily-push) | Ships one revenue-driving change + one marketing push |
 | "weekly review" / "weekly push" | [Weekly review](#weekly-review) | Audits the week's pushes, kills what isn't working, doubles down on what is |
 | "new SEO post" / "blog push" | [SEO blog push](#seo-blog-push) | Adds a new SEO-targeted blog post to `src/lib/promptempire-posts.ts` |
+| "new audience page" / "use-case page" | [Audience page push](#audience-page-push) | Adds a new segmented landing page at `/promptempire/for/[slug]` |
 | "cold outreach batch" | [Cold outreach batch](#cold-outreach-batch) | Generates 25 personalized cold email drafts for a target vertical |
 | "lead magnet drop" | [Lead magnet drop](#lead-magnet-drop) | Ships a free downloadable asset + opt-in path that grows the email list |
 | "conversion audit" | [Conversion audit](#conversion-audit) | Reviews the top-of-funnel pages and ships at least one CRO change |
+| "refill the queue" / "queue push" | [Refill the queue](#refill-the-queue) | Drops 3-5 new pre-baked content days into `marketing/QUEUE.md` |
+| "pull from queue" | [Pull from queue](#pull-from-queue) | Today's push is a queue entry — copy → personalize → log → mark used |
 
 ## Daily push
 
@@ -74,6 +77,24 @@ Steps:
 3. Sitemap and nav update automatically (`/promptempire/blog/[slug]` is data-driven).
 4. Add one internal link to the new post from at least one existing PromptEmpire page.
 
+## Audience page push
+
+Use when there's clear search demand for a specific audience cohort we're not yet capturing.
+
+Steps:
+
+1. Pick the audience. Good shapes:
+   - `agencies` (small marketing/SaaS shops, 2-10 person)
+   - `copywriters`
+   - `coaches`
+   - `course-creators`
+   - `solopreneurs`
+2. Add one entry to `AUDIENCES` in `src/lib/promptempire-audiences.ts`. Mirror the shape of
+   the existing entries — hero, pains (3), topCategories (5), sampleUseCases (5), whyThis (5).
+3. Sitemap, sub-nav, and footer pick it up automatically.
+4. Add an internal link from at least one existing PromptEmpire page (usually the blog
+   index sidebar or a related blog post).
+
 ## Cold outreach batch
 
 Use when revenue is flat and we need pipeline.
@@ -82,8 +103,8 @@ Steps:
 
 1. Pick a vertical (e.g. dental practices, marketing agencies, ADHD coaches).
 2. Generate 25 prospect rows with: name, role, company, one personalization hook.
-3. Write 3 message variants for the sequence (touch 1, touch 2, touch 3) using the cold
-   outreach prompts in the 500-pack.
+3. Reuse the 3 sequences in `marketing/COLD-EMAIL-SEQUENCES.md` — they cover newsletter
+   operators, course/community operators, and indie freelancers.
 4. Save as `marketing/COLD-BATCH-YYYY-MM-DD.md`. Do **not** send via Claude — the operator
    sends from their own inbox to preserve domain reputation.
 
@@ -99,6 +120,31 @@ Steps:
 3. Add an opt-in CTA to the most-trafficked page (currently `/promptempire/preview`).
 4. Wire it to `/api/leads` (build the route if it doesn't exist; persist email + source).
 5. Write the welcome email + the 3-touch nurture sequence in `marketing/NURTURE-[name].md`.
+
+## Refill the queue
+
+Use when the content queue (`marketing/QUEUE.md`) is down to 2 or fewer unused days.
+
+Steps:
+
+1. Open `marketing/QUEUE.md` — count entries not yet marked `[USED YYYY-MM-DD]`.
+2. Generate 3-5 new days with fresh angles. Each day needs: hook angle, Reddit, X thread,
+   LinkedIn, cold email touch 1. Use the format of the existing days as a template.
+3. Pull angles from: (a) the most-engaged blog post comments, (b) common DMs the operator
+   gets, (c) what the operator shipped in code that week (a new feature → new angle).
+4. Do **not** re-use last week's angles. Repetition burns engagement on every platform.
+
+## Pull from queue
+
+Use this on a day when there's no time to write fresh content — pull from the queue.
+
+Steps:
+
+1. Open `marketing/QUEUE.md` and pick the next unused day.
+2. Copy the content to `marketing/PUSH-YYYY-MM-DD.md` and personalize the brackets.
+3. Mark the original queue entry `[USED YYYY-MM-DD]`.
+4. Update `marketing/_LOG.md` placeholders.
+5. If the queue now has ≤2 unused days, run the "Refill the queue" routine after this push.
 
 ## Conversion audit
 

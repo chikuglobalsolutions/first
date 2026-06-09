@@ -74,6 +74,8 @@ export function PromptEmpireFooter() {
           <Link href="/promptempire/preview" className="hover:text-gray-400 transition-colors">Preview</Link>
           <Link href="/promptempire/categories" className="hover:text-gray-400 transition-colors">Categories</Link>
           <Link href="/promptempire/blog" className="hover:text-gray-400 transition-colors">Blog</Link>
+          <Link href="/promptempire/for/freelancers" className="hover:text-gray-400 transition-colors">For Freelancers</Link>
+          <Link href="/promptempire/for/adhd-entrepreneurs" className="hover:text-gray-400 transition-colors">For ADHD</Link>
           <Link href="/promptempire/about" className="hover:text-gray-400 transition-colors">About</Link>
           <Link href="/promptempire/faq" className="hover:text-gray-400 transition-colors">FAQ</Link>
           <Link href="/contact" className="hover:text-gray-400 transition-colors">Contact</Link>

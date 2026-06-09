@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { POSTS } from "@/lib/promptempire-posts";
+import { AUDIENCES } from "@/lib/promptempire-audiences";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXTAUTH_URL || "https://chikuglobalsolutions.com";
@@ -29,5 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const audienceRoutes: MetadataRoute.Sitemap = AUDIENCES.map((a) => ({
+    url: `${base}/promptempire/for/${a.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...audienceRoutes];
 }
