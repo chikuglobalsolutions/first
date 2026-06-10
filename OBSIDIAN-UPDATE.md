@@ -9,9 +9,9 @@
 | Product | Price | Link |
 |---------|-------|------|
 | Quick-Win Pack (10 cold-email prompts) | $7 | https://buy.stripe.com/7sY8wRdxg7zIfsQdU208g04 |
-| 500 AI Business Prompts | $37 | https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh |
+| 500 AI Business Prompts | $37 | https://buy.stripe.com/bJeeVf50K8DMcgEbLU08g00 |
 | Freelancer Command Center | $47 | https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01 |
-| Empire Bundle | $67 | https://buy.stripe.com/7sI8wR50Kf2adoI28X |
+| Empire Bundle | $67 | https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02 |
 
 **Coupon:** `EMPIRE20` (20% off, one-time per customer) — coupon `7WFipslO` exists in
 Stripe. **Manual step:** add a **promotion code** with the customer-facing code `EMPIRE20`

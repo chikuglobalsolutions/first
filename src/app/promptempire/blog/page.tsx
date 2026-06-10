@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Practical playbooks on ChatGPT prompts for cold email, content, sales pages, and AI workflows for freelancers and solopreneurs. Free reads from the 500 AI Business Prompts pack.",
 };
 
-const STRIPE_BUNDLE = "https://buy.stripe.com/7sI8wR50Kf2adoI28X";
+const STRIPE_BUNDLE = "https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02";
 
 export default function BlogIndexPage() {
   const sorted = [...POSTS].sort((a, b) => b.date.localeCompare(a.date));

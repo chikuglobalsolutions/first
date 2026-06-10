@@ -26,7 +26,7 @@ export function PromptEmpireNav({ active }: { active: string }) {
             <Link href="/chiku-fit" className="text-xs text-gray-400 hover:text-white transition-colors hidden md:block">Chiku Fit</Link>
             <Link href="/ai-systems" className="text-xs text-gray-400 hover:text-white transition-colors hidden md:block">AI Systems</Link>
             <a
-              href="https://buy.stripe.com/7sI8wR50Kf2adoI28X"
+              href="https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02"
               className="text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white px-5 py-2 rounded-lg transition-colors"
             >
               Get the Bundle →

@@ -80,11 +80,11 @@
 >
 > If you want the rest:
 >
-> 👉 **[Get the 500-pack — $37](https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh)**
+> 👉 **[Get the 500-pack — $37](https://buy.stripe.com/bJeeVf50K8DMcgEbLU08g00)**
 >
 > Or the bundle that includes the freelancer OS too:
 >
-> 👉 **[Get the Empire Bundle — $67](https://buy.stripe.com/7sI8wR50Kf2adoI28X)**
+> 👉 **[Get the Empire Bundle — $67](https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02)**
 >
 > Tomorrow: the proposal prompt that cuts my drafting time from 2 days to 1 afternoon.
 >
@@ -123,7 +123,7 @@
 >
 > The Client Onboarding category in the full 500-pack has 44 more prompts like this: contracts, intake forms, kickoff agendas, day-1 welcome sequences, first-week deliverable templates. The whole spine of a freelance business.
 >
-> 👉 **[Get the 500-pack — $37](https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh)** — pays for itself the first proposal it lands you.
+> 👉 **[Get the 500-pack — $37](https://buy.stripe.com/bJeeVf50K8DMcgEbLU08g00)** — pays for itself the first proposal it lands you.
 >
 > Tomorrow: the prompt I use when I'm frozen and can't decide what to do first (this one is for the ADHD readers — and honestly for everyone).
 >
@@ -163,7 +163,7 @@
 > - the 3pm "90 minutes left" prompt
 > - the one-open-loop-a-day closer
 >
-> 👉 **[Get the 500-pack — $37](https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh)**
+> 👉 **[Get the 500-pack — $37](https://buy.stripe.com/bJeeVf50K8DMcgEbLU08g00)**
 >
 > If ADHD is the reason you've been on the fence about this — that's exactly who I built this for. It's the cheapest cognitive prosthetic money can buy.
 >
@@ -185,11 +185,11 @@
 >
 > One thing I rarely do — **a discount.** Through Sunday, the code `EMPIRE20` takes 20% off any tier at checkout.
 >
-> 👉 **[500-pack — $37 → $29.60](https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh)** — use code `EMPIRE20`.
+> 👉 **[500-pack — $37 → $29.60](https://buy.stripe.com/bJeeVf50K8DMcgEbLU08g00)** — use code `EMPIRE20`.
 >
 > 👉 **[Command Center — $47 → $37.60](https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01)** — pack + freelancer-OS Notion workspace. Most buyers pick this.
 >
-> 👉 **[Empire Bundle — $67 → $53.60](https://buy.stripe.com/7sI8wR50Kf2adoI28X)** — everything + agency SOPs + white-label templates. Best $/leverage ratio.
+> 👉 **[Empire Bundle — $67 → $53.60](https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02)** — everything + agency SOPs + white-label templates. Best $/leverage ratio.
 >
 > Every tier has a 14-day no-questions refund. If it doesn't earn back the discount price, I send the money back same day.
 >

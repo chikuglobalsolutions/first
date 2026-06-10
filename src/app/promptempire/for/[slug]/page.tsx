@@ -23,9 +23,9 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
 
 const STRIPE_LINKS = {
   quickwin: "https://buy.stripe.com/7sY8wRdxg7zIfsQdU208g04",
-  prompts: "https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh",
+  prompts: "https://buy.stripe.com/bJeeVf50K8DMcgEbLU08g00",
   freelancer: "https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01",
-  bundle: "https://buy.stripe.com/7sI8wR50Kf2adoI28X",
+  bundle: "https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02",
 };
 
 export default function AudiencePage({ params }: { params: Params }) {
