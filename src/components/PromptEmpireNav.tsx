@@ -4,6 +4,7 @@ const SUB_LINKS = [
   { href: "/promptempire", label: "Overview" },
   { href: "/promptempire/preview", label: "Free Preview" },
   { href: "/promptempire/categories", label: "Categories" },
+  { href: "/promptempire/blog", label: "Blog" },
   { href: "/promptempire/about", label: "About" },
   { href: "/promptempire/faq", label: "FAQ" },
 ];
@@ -25,7 +26,7 @@ export function PromptEmpireNav({ active }: { active: string }) {
             <Link href="/chiku-fit" className="text-xs text-gray-400 hover:text-white transition-colors hidden md:block">Chiku Fit</Link>
             <Link href="/ai-systems" className="text-xs text-gray-400 hover:text-white transition-colors hidden md:block">AI Systems</Link>
             <a
-              href="https://buy.stripe.com/7sI8wR50Kf2adoI28X"
+              href="https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02"
               className="text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white px-5 py-2 rounded-lg transition-colors"
             >
               Get the Bundle →
@@ -72,6 +73,9 @@ export function PromptEmpireFooter() {
           <Link href="/promptempire" className="hover:text-gray-400 transition-colors">Overview</Link>
           <Link href="/promptempire/preview" className="hover:text-gray-400 transition-colors">Preview</Link>
           <Link href="/promptempire/categories" className="hover:text-gray-400 transition-colors">Categories</Link>
+          <Link href="/promptempire/blog" className="hover:text-gray-400 transition-colors">Blog</Link>
+          <Link href="/promptempire/for/freelancers" className="hover:text-gray-400 transition-colors">For Freelancers</Link>
+          <Link href="/promptempire/for/adhd-entrepreneurs" className="hover:text-gray-400 transition-colors">For ADHD</Link>
           <Link href="/promptempire/about" className="hover:text-gray-400 transition-colors">About</Link>
           <Link href="/promptempire/faq" className="hover:text-gray-400 transition-colors">FAQ</Link>
           <Link href="/contact" className="hover:text-gray-400 transition-colors">Contact</Link>

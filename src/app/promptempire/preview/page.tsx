@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PromptEmpireNav, PromptEmpireFooter } from "@/components/PromptEmpireNav";
+import { LeadMagnetForm } from "@/components/LeadMagnetForm";
 
 export const metadata: Metadata = {
   title: "Free Prompt Preview — Try 10 Prompts From the 500-Pack | PromptEmpire",
@@ -145,7 +146,7 @@ Create:
   },
 ];
 
-const STRIPE_BUNDLE = "https://buy.stripe.com/7sI8wR50Kf2adoI28X";
+const STRIPE_BUNDLE = "https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02";
 
 export default function PreviewPage() {
   return (
@@ -193,7 +194,19 @@ export default function PreviewPage() {
         </div>
       </section>
 
-      <section className="py-16 px-5 bg-white/[0.015] border-y border-white/5 text-center">
+      <section className="py-16 px-5 bg-white/[0.015] border-y border-white/5">
+        <div className="max-w-xl mx-auto">
+          <LeadMagnetForm
+            source="promptempire-preview"
+            context="preview page bottom CTA"
+            headline="Want the 30-Day Content Machine PDF? Free."
+            sub="Drop your email and we'll send the full 30-day content calendar PDF (a $19 product, free) — plus the one prompt we'd never include in a public preview."
+            cta="Send me the free PDF"
+          />
+        </div>
+      </section>
+
+      <section className="py-16 px-5 text-center">
         <div className="max-w-xl mx-auto">
           <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-4">
             You just saw 10. The library has 490 more.

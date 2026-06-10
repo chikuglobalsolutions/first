@@ -101,7 +101,7 @@ const CATEGORIES = [
   },
 ];
 
-const STRIPE_BUNDLE = "https://buy.stripe.com/7sI8wR50Kf2adoI28X";
+const STRIPE_BUNDLE = "https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02";
 
 export default function CategoriesPage() {
   return (

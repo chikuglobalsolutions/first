@@ -8,9 +8,16 @@
 ## 💳 Stripe Links (All Live)
 | Product | Price | Link |
 |---------|-------|------|
-| 500 AI Business Prompts | $37 | https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh |
+| Quick-Win Pack (10 cold-email prompts) | $7 | https://buy.stripe.com/7sY8wRdxg7zIfsQdU208g04 |
+| 500 AI Business Prompts | $37 | https://buy.stripe.com/bJeeVf50K8DMcgEbLU08g00 |
 | Freelancer Command Center | $47 | https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01 |
-| Empire Bundle | $67 | https://buy.stripe.com/7sI8wR50Kf2adoI28X |
+| Empire Bundle | $67 | https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02 |
+
+**Coupon:** `EMPIRE20` (20% off, one-time per customer) — coupon `7WFipslO` exists in
+Stripe. **Manual step:** add a **promotion code** with the customer-facing code `EMPIRE20`
+pointing at this coupon in the Stripe dashboard (Coupons → 7WFipslO → Add promotion code).
+The MCP API rejected the serialization, so this needs ~30 seconds in the dashboard.
+Also enable "Allow promotion codes" on each of the 4 payment links.
 
 ## 📦 Digital Products (Gumroad — Chiku Fit)
 | Product | Status |
@@ -25,6 +32,13 @@
 - [ ] Add env vars (NEXTAUTH_SECRET, STRIPE keys)
 - [ ] Go live at your domain
 - [ ] Post Reddit content from `PromptEmpire/REDDIT-POSTS-READY.md`
+
+## 🧱 PR #5 — Daily push (2026-06-09) deploy notes
+- [ ] Merge PR #5 (`claude/funny-babbage-vhzvw4`)
+- [ ] Run `npm run db:push` against production once — adds the new `Lead` table that
+      `/api/leads` writes to (capture for the lead-magnet opt-in forms)
+- [ ] Confirm `/api/leads` returns `{ ok: true, downloadUrl }` on a test POST
+- [ ] Smoke test the opt-in widget on `/promptempire/preview` and `/promptempire/blog`
 
 ## 🔴 Blockers
 - Gumroad checkout URLs missing for Chiku Fit products (add them to the storefront once created)

@@ -1,0 +1,178 @@
+# Autonomous routines — Chiku Global Solutions
+
+> The list of routines Claude Code can run on this repo without further instructions.
+> The goal is the same as every other file in the company: **ship something that produces
+> revenue every single day**.
+
+## Trigger words
+
+When the operator says any of these, run the matching routine:
+
+| Trigger | Routine | What it does |
+|---------|---------|--------------|
+| "run the daily push" / "daily push" | [Daily push](#daily-push) | Ships one revenue-driving change + one marketing push |
+| "weekly review" / "weekly push" | [Weekly review](#weekly-review) | Audits the week's pushes, kills what isn't working, doubles down on what is |
+| "new SEO post" / "blog push" | [SEO blog push](#seo-blog-push) | Adds a new SEO-targeted blog post to `src/lib/promptempire-posts.ts` |
+| "new audience page" / "use-case page" | [Audience page push](#audience-page-push) | Adds a new segmented landing page at `/promptempire/for/[slug]` |
+| "cold outreach batch" | [Cold outreach batch](#cold-outreach-batch) | Generates 25 personalized cold email drafts for a target vertical |
+| "lead magnet drop" | [Lead magnet drop](#lead-magnet-drop) | Ships a free downloadable asset + opt-in path that grows the email list |
+| "conversion audit" | [Conversion audit](#conversion-audit) | Reviews the top-of-funnel pages and ships at least one CRO change |
+| "refill the queue" / "queue push" | [Refill the queue](#refill-the-queue) | Drops 3-5 new pre-baked content days into `marketing/QUEUE.md` |
+| "pull from queue" | [Pull from queue](#pull-from-queue) | Today's push is a queue entry — copy → personalize → log → mark used |
+
+## Daily push
+
+**Cadence:** every working day.
+**Time budget:** 60–90 minutes of Claude time.
+**Definition of done:** at least one merged PR + one ready-to-post marketing file.
+
+Steps:
+
+1. Pull `claude/funny-babbage-vhzvw4` and check `marketing/_LOG.md` for what shipped yesterday.
+2. Pick **one** of these revenue levers — don't try to do all four:
+   - **SEO blog post.** Add a new entry to `src/lib/promptempire-posts.ts`. Each post must
+     target a buying-intent keyword (e.g. "chatgpt prompts for [task]", "[tool] vs [tool]",
+     "ai prompts for [audience]").
+   - **Conversion change.** Add a testimonial slot, urgency element, or trust badge to a
+     top-of-funnel page. Measure baseline first via logs in `marketing/_LOG.md`.
+   - **New product page.** Add a comparison page (`/promptempire/vs/[competitor]`) or
+     use-case page (`/promptempire/for/[audience]`).
+   - **Free lead magnet.** Ship a downloadable to `public/downloads/` + an opt-in flow.
+3. Write the marketing collateral: `marketing/PUSH-YYYY-MM-DD.md` with **at least** one
+   Reddit post, one X thread, one LinkedIn post, and one cold email — all using today's
+   ship as the angle.
+4. Update `marketing/_LOG.md` with placeholder rows for the day's sends.
+5. Type-check, commit, push to `claude/funny-babbage-vhzvw4`, open a draft PR.
+
+## Weekly review
+
+**Cadence:** Mondays.
+**Time budget:** 30 minutes.
+**Definition of done:** the week's worst channel is paused, the best is doubled, and one
+new experiment is queued.
+
+Steps:
+
+1. Read the last 7 days of `marketing/_LOG.md`.
+2. Compute "channel-hours → sales attributed". Sort.
+3. Pause the bottom channel for the week ahead (note it in `marketing/_LOG.md`).
+4. Queue 2x volume on the top channel.
+5. Pick one new experiment (a new sub, a new format, a new offer) and add it to next week's
+   `PUSH-YYYY-MM-DD.md`.
+
+## SEO blog push
+
+Use when there's clear search demand we're not capturing.
+
+Steps:
+
+1. Pick a target query. Good shapes:
+   - `chatgpt prompts for [task]`
+   - `[tool] vs [tool]`
+   - `ai prompts for [audience]`
+   - `how to [task] with chatgpt`
+   - `[task] template`
+2. Add one entry to `POSTS` in `src/lib/promptempire-posts.ts`. Min: 1,500 words, ≥3 H2s,
+   ≥1 FAQ block, ≥1 CTA block.
+3. Sitemap and nav update automatically (`/promptempire/blog/[slug]` is data-driven).
+4. Add one internal link to the new post from at least one existing PromptEmpire page.
+
+## Audience page push
+
+Use when there's clear search demand for a specific audience cohort we're not yet capturing.
+
+Steps:
+
+1. Pick the audience. Good shapes:
+   - `agencies` (small marketing/SaaS shops, 2-10 person)
+   - `copywriters`
+   - `coaches`
+   - `course-creators`
+   - `solopreneurs`
+2. Add one entry to `AUDIENCES` in `src/lib/promptempire-audiences.ts`. Mirror the shape of
+   the existing entries — hero, pains (3), topCategories (5), sampleUseCases (5), whyThis (5).
+3. Sitemap, sub-nav, and footer pick it up automatically.
+4. Add an internal link from at least one existing PromptEmpire page (usually the blog
+   index sidebar or a related blog post).
+
+## Cold outreach batch
+
+Use when revenue is flat and we need pipeline.
+
+Steps:
+
+1. Pick a vertical (e.g. dental practices, marketing agencies, ADHD coaches).
+2. Generate 25 prospect rows with: name, role, company, one personalization hook.
+3. Reuse the 3 sequences in `marketing/COLD-EMAIL-SEQUENCES.md` — they cover newsletter
+   operators, course/community operators, and indie freelancers.
+4. Save as `marketing/COLD-BATCH-YYYY-MM-DD.md`. Do **not** send via Claude — the operator
+   sends from their own inbox to preserve domain reputation.
+
+## Lead magnet drop
+
+Use when we need to grow the email list more than we need direct sales today.
+
+Lead capture is already wired:
+- `/api/leads` (POST) — accepts `{ email, source, context? }`, persists to the `Lead`
+  Prisma model. Always logs to console as a backup, so a missing DB never silently
+  drops a lead.
+- `<LeadMagnetForm />` in `src/components/LeadMagnetForm.tsx` — drop-in client component
+  for any page; props `source` + `context` for attribution.
+- `Lead` model in `prisma/schema.prisma` — **requires `npm run db:push` against prod
+  the first time it ships** so the table exists.
+
+Steps to add a new magnet:
+
+1. Pick a high-utility, narrow asset (e.g. "10 cold email prompts that booked replies last
+   month", "freelancer pricing calculator", "30-day content calendar PDF").
+2. Generate the PDF or template. Store in `public/downloads/`.
+3. Drop a `<LeadMagnetForm />` on the page where intent is highest. Use a unique `source`
+   string so attribution is clean in `marketing/_LOG.md`.
+4. Update `/api/leads` `downloadUrl` to point to the new magnet if it should replace the
+   default magnet, OR make `downloadUrl` source-aware (one PDF per source).
+5. Write the welcome email + the 3-touch nurture sequence in `marketing/NURTURE-[name].md`.
+
+## Refill the queue
+
+Use when the content queue (`marketing/QUEUE.md`) is down to 2 or fewer unused days.
+
+Steps:
+
+1. Open `marketing/QUEUE.md` — count entries not yet marked `[USED YYYY-MM-DD]`.
+2. Generate 3-5 new days with fresh angles. Each day needs: hook angle, Reddit, X thread,
+   LinkedIn, cold email touch 1. Use the format of the existing days as a template.
+3. Pull angles from: (a) the most-engaged blog post comments, (b) common DMs the operator
+   gets, (c) what the operator shipped in code that week (a new feature → new angle).
+4. Do **not** re-use last week's angles. Repetition burns engagement on every platform.
+
+## Pull from queue
+
+Use this on a day when there's no time to write fresh content — pull from the queue.
+
+Steps:
+
+1. Open `marketing/QUEUE.md` and pick the next unused day.
+2. Copy the content to `marketing/PUSH-YYYY-MM-DD.md` and personalize the brackets.
+3. Mark the original queue entry `[USED YYYY-MM-DD]`.
+4. Update `marketing/_LOG.md` placeholders.
+5. If the queue now has ≤2 unused days, run the "Refill the queue" routine after this push.
+
+## Conversion audit
+
+Use when traffic is OK but conversion is mediocre.
+
+Steps:
+
+1. List the top 5 most-trafficked pages (use Netlify Analytics or check sitemap priorities).
+2. For each, identify the single weakest conversion element (no above-the-fold CTA, no
+   social proof, no urgency, friction in checkout, etc.).
+3. Pick the **one** page where a fix would compound most (usually `/promptempire`).
+4. Ship the fix. Note before/after in `marketing/_LOG.md`.
+
+## Guardrails
+
+- Never push to `main`. Always to `claude/funny-babbage-vhzvw4`.
+- Always type-check (`npx tsc --noEmit`) before committing.
+- Never block on operator input for content choices — pick the angle, ship, log it, move on.
+- Never hold a "perfect" piece of content — daily mediocre beats weekly excellent.
+- Always update `marketing/_LOG.md` when shipping marketing collateral.

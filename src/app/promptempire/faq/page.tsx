@@ -154,7 +154,7 @@ export default function FAQPage() {
         <div className="max-w-xl mx-auto">
           <h2 className="text-3xl font-extrabold text-white mb-4">Ready to grab it?</h2>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
-            <a href="https://buy.stripe.com/7sI8wR50Kf2adoI28X" className="bg-violet-600 hover:bg-violet-500 text-white font-bold px-7 py-3.5 rounded-xl transition-colors">
+            <a href="https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02" className="bg-violet-600 hover:bg-violet-500 text-white font-bold px-7 py-3.5 rounded-xl transition-colors">
               Get the Empire Bundle — $67
             </a>
             <Link href="/promptempire" className="border border-white/15 hover:border-white/30 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors">

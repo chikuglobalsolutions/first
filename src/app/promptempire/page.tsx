@@ -13,9 +13,10 @@ export const metadata: Metadata = {
 };
 
 const STRIPE_LINKS = {
-  prompts: "https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh",
+  quickwin: "https://buy.stripe.com/7sY8wRdxg7zIfsQdU208g04",
+  prompts: "https://buy.stripe.com/bJeeVf50K8DMcgEbLU08g00",
   freelancer: "https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01",
-  bundle: "https://buy.stripe.com/7sI8wR50Kf2adoI28X",
+  bundle: "https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02",
 };
 
 const CATEGORIES = [
@@ -321,6 +322,34 @@ export default function PromptEmpirePage() {
             </h2>
             <p className="text-gray-400">Start where it makes sense for your budget.</p>
           </div>
+
+          {/* Tripwire / try-before-you-buy */}
+          <a
+            href={STRIPE_LINKS.quickwin}
+            className="group block max-w-3xl mx-auto mb-10 bg-gradient-to-br from-amber-500/10 to-orange-500/5 border border-amber-500/25 hover:border-amber-500/50 rounded-2xl p-5 md:p-6 transition-colors"
+          >
+            <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+              <div className="shrink-0">
+                <p className="text-[10px] font-extrabold uppercase tracking-widest text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 rounded-full inline-block">
+                  Try before you buy
+                </p>
+              </div>
+              <div className="flex-1">
+                <p className="text-base md:text-lg font-extrabold text-white leading-tight">
+                  Quick-Win Pack: 10 cold-email prompts that get replies
+                </p>
+                <p className="text-sm text-gray-400 mt-1 leading-relaxed">
+                  10 of the highest-converting prompts from the full library. Test the structure for the price of a sandwich.
+                </p>
+              </div>
+              <div className="flex items-center gap-3 shrink-0">
+                <span className="text-3xl font-extrabold text-white">$7</span>
+                <span className="bg-amber-500 group-hover:bg-amber-400 text-gray-950 font-extrabold text-sm px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
+                  Get it →
+                </span>
+              </div>
+            </div>
+          </a>
 
           <div className="grid md:grid-cols-3 gap-6">
             {PRODUCTS.map((product) => (
