@@ -175,23 +175,25 @@
 
 ## Email 5 — day 7 (the close)
 
-**Subject:** wrapping this up
+**Subject:** wrapping this up — 20% off through Sunday with EMPIRE20
 
 > Hey —
 >
 > Six days ago you grabbed the 30-Day Content Machine PDF. Since then I've sent the cold-email opener, the proposal prompt, and the ADHD triage prompt.
 >
-> If those prompts have produced anything useful in your business this week — even one reply, even one cleared todo — the $37 for the rest of the library is the cheapest investment you'll make this quarter. It's literally a pizza dinner.
+> If those prompts have produced anything useful in your business this week — even one reply, even one cleared todo — the $37 for the rest of the library is the cheapest investment you'll make this quarter.
 >
-> Here's where to grab it:
+> One thing I rarely do — **a discount.** Through Sunday, the code `EMPIRE20` takes 20% off any tier at checkout.
 >
-> 👉 **[500-pack — $37](https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh)** — the whole library, PDF + Notion.
+> 👉 **[500-pack — $37 → $29.60](https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh)** — use code `EMPIRE20`.
 >
-> 👉 **[Command Center — $47](https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01)** — pack + freelancer-OS Notion workspace. Most buyers pick this.
+> 👉 **[Command Center — $47 → $37.60](https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01)** — pack + freelancer-OS Notion workspace. Most buyers pick this.
 >
-> 👉 **[Empire Bundle — $67](https://buy.stripe.com/7sI8wR50Kf2adoI28X)** — everything + agency SOPs + white-label templates. Best $/leverage ratio.
+> 👉 **[Empire Bundle — $67 → $53.60](https://buy.stripe.com/7sI8wR50Kf2adoI28X)** — everything + agency SOPs + white-label templates. Best $/leverage ratio.
 >
-> Every tier has a 14-day no-questions refund. If it doesn't earn back the $37, I send the money back same day.
+> Every tier has a 14-day no-questions refund. If it doesn't earn back the discount price, I send the money back same day.
+>
+> If $7 is your speed instead, the Quick-Win Pack is here: **[Quick-Win Pack — $7](https://buy.stripe.com/7sY8wRdxg7zIfsQdU208g04)**. (Discount doesn't apply at this tier — it's already at the floor.)
 >
 > After this email, I won't follow up about the pack again — you'll keep getting one playbook a week, but no more pitches. So if you've been on the fence, this is the moment.
 >

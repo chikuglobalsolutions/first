@@ -8,9 +8,16 @@
 ## 💳 Stripe Links (All Live)
 | Product | Price | Link |
 |---------|-------|------|
+| Quick-Win Pack (10 cold-email prompts) | $7 | https://buy.stripe.com/7sY8wRdxg7zIfsQdU208g04 |
 | 500 AI Business Prompts | $37 | https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh |
 | Freelancer Command Center | $47 | https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01 |
 | Empire Bundle | $67 | https://buy.stripe.com/7sI8wR50Kf2adoI28X |
+
+**Coupon:** `EMPIRE20` (20% off, one-time per customer) — coupon `7WFipslO` exists in
+Stripe. **Manual step:** add a **promotion code** with the customer-facing code `EMPIRE20`
+pointing at this coupon in the Stripe dashboard (Coupons → 7WFipslO → Add promotion code).
+The MCP API rejected the serialization, so this needs ~30 seconds in the dashboard.
+Also enable "Allow promotion codes" on each of the 4 payment links.
 
 ## 📦 Digital Products (Gumroad — Chiku Fit)
 | Product | Status |
