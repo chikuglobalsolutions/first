@@ -35,6 +35,11 @@ separated by route group under `src/app/`:
 - QR code generator — the app's origin (the package is still named `qrflow`); see
   `QRGenerator`, `/generate`, `/dashboard`, and the scan-tracking route
 
+Shared/parent-brand routes (not tied to one product line) live directly under `src/app/`:
+the root storefront (`page.tsx`) plus `/about`, `/contact`, and `/delivery`. Each product
+line also carries its own nav component in `src/components/` (`Navbar`, `AISystemsNav`,
+`ChikuFitNav`, `PromptEmpireNav`) rather than a shared header.
+
 All brands share one root layout (`src/app/layout.tsx`, dark theme) and the subsystems below.
 Path alias `@/*` maps to `src/*`. Pages are React Server Components by default.
 
@@ -65,10 +70,20 @@ and the `PLANS` config (`free`/`pro`/`business`, with `priceId`s from env). Subs
 When changing webhook handling, preserve the raw-body read — parsing the body first breaks
 signature verification.
 
-### QR scan tracking
-`GET /api/scan/[shortCode]` looks up the `QRCode`, then in a single `prisma.$transaction`
-increments `scans` and writes a `ScanLog` (device inferred from the user agent) before
-redirecting to the target URL.
+### QR generation & scan tracking
+- `POST /api/generate` (`QRGenerator` calls this) validates the target URL, renders the QR
+  PNG with the `qrcode` lib, and — if a user is signed in — persists a `QRCode` row. Free-plan
+  users are capped at 5 saved codes (returns `403` past the limit); this is the main place the
+  `user.plan` gate is enforced for QR.
+- `GET /api/scan/[shortCode]` looks up the `QRCode`, then in a single `prisma.$transaction`
+  increments `scans` and writes a `ScanLog` (device inferred from the user agent) before
+  redirecting to the target URL.
+
+### Intake form (AI Systems)
+`POST /api/intake` (`force-dynamic`, Node runtime) backs the `IntakeForm` component on the
+`ai-systems` site. It validates required fields, then *attempts* to persist an
+`IntakeSubmission` via a lazily-imported Prisma client — DB failures are swallowed
+(`tryPersistToDb`) so a missing/unmigrated database never breaks the form submission.
 
 ### AI Systems content
 `src/lib/ai-systems-data.ts` is the content source of truth for the `ai-systems` brand
