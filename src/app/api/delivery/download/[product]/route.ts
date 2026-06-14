@@ -19,9 +19,9 @@ function isLikelySessionId(value: string): boolean {
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { product: string } }
+  { params }: { params: Promise<{ product: string }> }
 ) {
-  const product = params.product;
+  const { product } = await params;
   if (!PDF_KEYS.has(product)) {
     return NextResponse.json({ error: "Unknown product" }, { status: 404 });
   }

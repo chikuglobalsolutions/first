@@ -68,9 +68,10 @@ async function verifySession(sessionId: string | undefined): Promise<Verified | 
 export default async function DeliveryPage({
   searchParams,
 }: {
-  searchParams: { session_id?: string };
+  searchParams: Promise<{ session_id?: string }>;
 }) {
-  const result = await verifySession(searchParams.session_id);
+  const { session_id } = await searchParams;
+  const result = await verifySession(session_id);
 
   if (!result.ok) return <ErrorState reason={result.reason} />;
 
