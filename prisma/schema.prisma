@@ -95,3 +95,20 @@ model IntakeSubmission {
   status          String   @default("new")
   createdAt       DateTime @default(now())
 }
+
+model Purchase {
+  id                  String   @id @default(cuid())
+  stripeSessionId     String   @unique
+  stripeCustomerId    String?
+  stripePaymentIntent String?
+  email               String
+  amount              Int
+  currency            String   @default("usd")
+  productKey          String
+  productName         String
+  status              String   @default("paid")
+  createdAt           DateTime @default(now())
+
+  @@index([email])
+  @@index([stripeCustomerId])
+}
