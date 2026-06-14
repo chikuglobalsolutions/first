@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Marketing:** `MARKETING.md` is the source of truth for the daily cross-brand marketing
+> routine (the four businesses, daily workflow, content library, partner-outreach rules, and
+> tracker). Read and update it for any marketing task. Note: automated Instagram email
+> scraping is intentionally **not** done — see the guardrails section in `MARKETING.md`.
+
 ## Commands
 
 ```bash
