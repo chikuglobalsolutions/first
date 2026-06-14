@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 interface QRCodeData {
   id: string;
@@ -45,12 +46,12 @@ export default function Dashboard({ qrCodes, plan, userEmail }: DashboardProps) 
             {plan} plan
           </span>
           {!isPro && (
-            <a
+            <Link
               href="/#pricing"
               className="text-sm font-semibold bg-brand-600 text-white px-4 py-2 rounded-lg hover:bg-brand-700 transition-colors"
             >
               Upgrade →
-            </a>
+            </Link>
           )}
         </div>
       </div>
@@ -67,7 +68,7 @@ export default function Dashboard({ qrCodes, plan, userEmail }: DashboardProps) 
             <p className="text-3xl font-extrabold text-gray-900 mt-1">{stat.value}</p>
             {!isPro && stat.label === "Total Scans" && (
               <p className="text-xs text-brand-600 mt-1 font-medium">
-                <a href="/#pricing">Upgrade to unlock →</a>
+                <Link href="/#pricing">Upgrade to unlock →</Link>
               </p>
             )}
           </div>
