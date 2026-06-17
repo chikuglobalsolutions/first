@@ -76,6 +76,23 @@ redirecting to the target URL.
 `ai-systems/industries/[slug]` render from these arrays — add entries there rather than
 creating per-page files.
 
+## Marketing system
+
+`marketing/MARKETING.md` is the **source of truth** for all marketing across the four brands
+(PromptEmpire, Chiku Fit, Chiku AI Systems, qrflow). A daily routine reads it, produces
+brand-accurate content, and updates it as it learns. Structure:
+- `marketing/MARKETING.md` — strategy, brand table (verified prices/links), channel map,
+  compliance rules, KPIs, the daily runbook, learnings log, and changelog.
+- `marketing/brands/*.md` — per-brand profiles (offers, audience, voice, content pillars, CTAs).
+- `marketing/playbook.md` — tactics + templates that grow as the engine finds what works.
+- `marketing/tracker.md` — running log of every content batch.
+- `marketing/content/<YYYY-MM-DD>/*.md` — dated content batches per brand.
+
+Compliance is non-negotiable: **no contact scraping, no cold email to non-opted-in people**;
+email goes only to opted-in Mailchimp audiences. When marketing facts (prices, links, offers)
+change, update `marketing/MARKETING.md` and the relevant brand profile; product prices live in
+`src/lib/stripe.ts` and `src/lib/ai-systems-data.ts` — keep content in sync with them.
+
 ## Environment & deploy
 
 Required env vars (see `.env.example`): `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`,
