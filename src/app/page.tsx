@@ -17,9 +17,9 @@ const BRANDS = [
     emoji: "🤖",
     name: "PromptEmpire",
     tag: "Digital Products",
-    tagColor: "text-violet-400",
-    tagBg: "bg-violet-500/10 border-violet-500/20",
-    cardBorder: "hover:border-violet-500/40",
+    tagColor: "text-brand-400",
+    tagBg: "bg-brand-500/10 border-brand-500/20",
+    cardBorder: "hover:border-brand-500/40",
     desc: "500 AI prompts that replace a $5,000/mo copywriter. Cold emails, sales pages, SOPs — built for entrepreneurs who can't afford to waste time staring at a blank screen.",
     price: "From $37",
     cta: "See Prompts",
@@ -111,7 +111,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/promptempire"
-              className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-700 text-white font-bold text-base px-7 py-3.5 rounded-xl transition-colors shadow-xl shadow-violet-900/40"
+              className="inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-brand-900 hover:text-white font-bold text-base px-7 py-3.5 rounded-xl transition-colors shadow-xl shadow-brand-900/40"
             >
               Explore PromptEmpire →
             </Link>
@@ -231,7 +231,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/promptempire"
-              className="bg-violet-600 hover:bg-violet-700 text-white font-bold px-7 py-3.5 rounded-xl transition-colors"
+              className="bg-brand-500 hover:bg-brand-600 text-brand-900 hover:text-white font-bold px-7 py-3.5 rounded-xl transition-colors"
             >
               Browse PromptEmpire
             </Link>
