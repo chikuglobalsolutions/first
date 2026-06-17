@@ -47,22 +47,26 @@ export const PROMPTEMPIRE_PRODUCTS: PromptEmpireProduct[] = [
   },
 ];
 
-export const PDF_FILES: Record<PdfKey, { filename: string; displayName: string }> = {
+export const PDF_FILES: Record<PdfKey, { filename: string; displayName: string; sizeKb: number }> = {
   "500-ai-business-prompts": {
     filename: "500-ai-business-prompts.pdf",
     displayName: "500 AI Business Prompts.pdf",
+    sizeKb: 80,
   },
   "freelancer-command-center": {
     filename: "freelancer-command-center.pdf",
     displayName: "Freelancer Command Center.pdf",
+    sizeKb: 60,
   },
   "30-day-content-machine": {
     filename: "30-day-content-machine.pdf",
     displayName: "30-Day Content Machine.pdf",
+    sizeKb: 41,
   },
   "email-empire-swipe-file": {
     filename: "email-empire-swipe-file.pdf",
     displayName: "Email Empire Swipe File.pdf",
+    sizeKb: 43,
   },
 };
 
