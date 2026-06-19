@@ -3,6 +3,7 @@ import QRCode from "qrcode";
 import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import { isValidUrl, freeLimitReached, resolveQrColors } from "@/lib/qr";
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,7 +14,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "URL is required" }, { status: 400 });
     }
 
-    try { new URL(url); } catch {
+    if (!isValidUrl(url)) {
       return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
     }
 
@@ -24,7 +25,7 @@ export async function POST(req: NextRequest) {
       const user = await prisma.user.findUnique({ where: { id: userId } });
       if (user?.plan === "free") {
         const count = await prisma.qRCode.count({ where: { userId } });
-        if (count >= 5) {
+        if (freeLimitReached(count)) {
           return NextResponse.json(
             { error: "Free plan limit reached (5 QR codes). Please upgrade to Pro." },
             { status: 403 }
@@ -37,13 +38,12 @@ export async function POST(req: NextRequest) {
       ? (await prisma.user.findUnique({ where: { id: userId } }))?.plan !== "free"
       : false;
 
+    const colors = resolveQrColors(isPro, color, bgColor);
+
     const qrDataUrl = await QRCode.toDataURL(url, {
       width: size,
       margin: 2,
-      color: {
-        dark: isPro ? color : "#000000",
-        light: isPro ? bgColor : "#ffffff",
-      },
+      color: colors,
       errorCorrectionLevel: "M",
     });
 
@@ -51,8 +51,8 @@ export async function POST(req: NextRequest) {
       data: {
         url,
         label: label || null,
-        color: isPro ? color : "#000000",
-        bgColor: isPro ? bgColor : "#ffffff",
+        color: colors.dark,
+        bgColor: colors.light,
         size,
         userId: userId || null,
       },

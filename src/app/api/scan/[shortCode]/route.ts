@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { headers } from "next/headers";
+import { detectDevice } from "@/lib/scan";
 
 export async function GET(
   req: NextRequest,
@@ -15,8 +16,7 @@ export async function GET(
   }
 
   const headersList = headers();
-  const ua = headersList.get("user-agent") || "";
-  const device = /mobile|android|iphone|ipad/i.test(ua) ? "mobile" : "desktop";
+  const device = detectDevice(headersList.get("user-agent"));
 
   await prisma.$transaction([
     prisma.qRCode.update({
