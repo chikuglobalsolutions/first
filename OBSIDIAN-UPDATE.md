@@ -1,45 +1,56 @@
-# PromptEmpire — Business Status (May 2026)
+# Chiku Global Solutions — Business Status & Source of Truth
 
-## 🟢 What's Live
-- GitHub repo: `chikuglobalsolutions/first` — branch `claude/passive-income-business-FHl03`
-- PR #1 open: full PromptEmpire Next.js sales page
-- CI: GitHub Actions builds + type-checks every push
+*Last updated: 2026-06-19 by the daily routine. This file is the single source of truth — read it first, update it, don't create new parallel trackers.*
 
-## 💳 Stripe Links (All Live)
-| Product | Price | Link |
-|---------|-------|------|
-| 500 AI Business Prompts | $37 | https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh |
-| Freelancer Command Center | $47 | https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01 |
-| Empire Bundle | $67 | https://buy.stripe.com/7sI8wR50Kf2adoI28X |
+## ⛔ The one thing blocking all revenue right now
 
-## 📦 Digital Products (Gumroad — Chiku Fit)
-| Product | Status |
-|---------|--------|
-| 8-Week Mass Accelerator | Built — needs Gumroad checkout URL |
-| Broke Bulk Meal Plan Pack | Built — needs Gumroad checkout URL |
-| Complete Bulking System (Bundle) | Built — needs Gumroad checkout URL |
+**The storefront is not deployed to a working public URL.** As of 2026-06-19:
+- `chikuglobalsolutions.com` → connection refused (does not resolve).
+- `promptempire-chiku.netlify.app` and its routes → **HTTP 403** (not serving the Next.js app).
 
-## 🚀 Deploy Checklist (Do Today)
-- [ ] Merge PR #1 on GitHub
-- [ ] Connect `chikuglobalsolutions/first` to Netlify
-- [ ] Add env vars (NEXTAUTH_SECRET, STRIPE keys)
-- [ ] Go live at your domain
-- [ ] Post Reddit content from `PromptEmpire/REDDIT-POSTS-READY.md`
+Until the `first` repo is deployed to a live URL, **nothing converts** — every product page, the gated `/delivery` download flow, the blog, lead capture, and all Stripe links lead to a dead site. No amount of marketing or content can make money against a site that won't load. **This is the #1 priority and only the owner can do it.**
 
-## 🔴 Blockers
-- Gumroad checkout URLs missing for Chiku Fit products (add them to the storefront once created)
-- PromptEmpire product delivery page needs Google Drive link added
+## 🧱 Why the daily routine keeps stalling (read before generating more content)
 
-## 📅 This Week
-- [ ] Deploy PromptEmpire site
-- [ ] Post 1 Reddit thread/day (r/ChatGPT → r/entrepreneur → r/freelance → r/passive_income)
-- [ ] Add Gumroad URLs to Chiku Fit offers
-- [ ] Ship 7 content hooks (Chiku Fit weekly posting plan)
+This routine has run many times and produced **four near-duplicate marketing PRs** — #4, #8, #9, #10 — each creating a `MARKETING.md`, declining the Instagram email-scrape, and asking the *same* unanswered questions. None are merged. Plus substantive PRs #6 (revenue/security), #7 (docs), #11 (tests) sit open as drafts.
 
-## Chiku Global Solutions (Agency)
-- Landing page: chiku-global-solutions.netlify.app (deploy ZIP from Desktop)
-- Packages: Starter $1,497+$297/mo · Growth $2,497+$497/mo · Premium $4,997+$997/mo
-- Action: Send cold email Sequence A to 20 dental practices
+**The bottleneck is not content. It is owner decisions + deploy.** Generating a 5th content batch adds noise, not money. Future runs: do NOT open another marketing doc PR. Update *this* file and notify the owner instead.
 
----
-*Updated: May 2026 | Repo: chikuglobalsolutions/first*
+## ✅ What only the owner can do (in priority order)
+
+1. **Deploy the `first` repo to Netlify** and confirm a live URL (env vars: `NEXTAUTH_SECRET`, Stripe keys, `DATABASE_URL` for Postgres, `EMAIL_SERVER_*`). Run `npm run db:push` once against prod.
+2. **Triage the PR backlog** — merge or close. My recommendation:
+   - Review/merge **#6** (security hardening + `/delivery` revenue gate) and **#11** (test suite) — real value.
+   - **Close #4, #8, #9, #10** — they are duplicates of each other; their useful content is summarized here.
+   - Merge **#7** (CLAUDE.md docs) or close.
+3. **Add the 2 missing Gumroad checkout URLs** (Chiku Fit "Broke Bulk Meal Plan Pack" + "Complete Bulking System") so those offers stop showing "coming soon."
+4. **Update PromptEmpire Stripe payment-link redirects** to point at the live `/delivery?session_id={CHECKOUT_SESSION_ID}` once the domain resolves.
+5. **Answer the marketing inputs** below so the routine can do real, compliant promotion.
+
+## 💰 The four businesses (offers as last verified — re-check Stripe/Gumroad dashboards)
+
+| Brand | Offers / Price | Notes |
+|-------|----------------|-------|
+| **PromptEmpire** (AI prompt packs) | $7 Quick-Win tripwire · $37 · $47 · $67 bundle | Stripe payment links live; redirects point at a dead domain. |
+| **Chiku Fit** (fitness) | 8-Week Mass Accelerator $49.99 (Gumroad, live) · 2 more built but **missing Gumroad URLs** | |
+| **Chiku AI Systems** (Dental AI agency) | Starter $1,497+$297/mo · Growth $2,497+$497/mo · Premium $4,997+$997/mo | Intake form exists; needs leads, not content. |
+| **qrflow** (QR generator) | $9/mo · $29/mo (Pro) | The app's origin; plan gating is in code. |
+
+## 📣 Marketing approach (and what was declined)
+
+**Declined every run, on purpose:** scraping emails from Instagram pages to cold-market them. It violates Instagram/Meta ToS, harvests personal data without consent, is unsolicited bulk email under CAN-SPAM/GDPR, and would get the company's sending domain blacklisted — which would also break the app's own Stripe receipts and NextAuth magic-link logins. There is also no Instagram access in this environment. This is not a tooling gap to work around; it's the wrong play.
+
+**The legitimate engine instead** (runs once the site is live + inputs provided):
+- Organic, draft-only content per brand (owner posts it — no auto-publish; no social accounts are connected).
+- Opt-in email only, to existing Mailchimp audiences (drafts, not sends, without approval).
+- 1:1 partnership/affiliate outreach to creators who *publicly list* a collab/business email.
+
+## ❓ Inputs needed from owner (blocking real marketing)
+- Real social handles per brand (X / LinkedIn / IG / TikTok)?
+- Is there a Mailchimp audience, or start from zero?
+- OK to draft (not send) Mailchimp campaigns to opted-in lists?
+- Keep content draft-only, or wire up an approved auto-publish path later?
+
+## 📅 Changelog
+- **2026-06-19** — Confirmed storefront returns 403 / domain refused; consolidated 4 duplicate marketing PRs into this file; reframed the real blocker as deploy + owner decisions, not content.
+- **May 2026** — Initial status (PromptEmpire live PR, Stripe links, Chiku Fit Gumroad).
