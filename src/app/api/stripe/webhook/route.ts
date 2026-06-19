@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { prisma } from "@/lib/prisma";
+import { planForSubscription } from "@/lib/plan";
 import Stripe from "stripe";
 
 export const dynamic = "force-dynamic";
@@ -36,8 +37,7 @@ export async function POST(req: NextRequest) {
       const sub = event.data.object as Stripe.Subscription;
       const userId = sub.metadata?.userId;
       if (userId) {
-        const status = sub.status;
-        const plan = status === "active" ? (sub.metadata?.plan ?? "free") : "free";
+        const plan = planForSubscription(sub.status, sub.metadata?.plan);
         await prisma.user.update({ where: { id: userId }, data: { plan } });
       }
       break;

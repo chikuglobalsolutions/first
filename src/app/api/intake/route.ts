@@ -1,30 +1,9 @@
 import { NextResponse } from "next/server";
+import { validateIntake } from "@/lib/validation";
+import type { IntakePayload } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
-type IntakePayload = {
-  businessName?: string;
-  businessType?: string;
-  contactName?: string;
-  contactEmail?: string;
-  contactPhone?: string;
-  monthlyRevenue?: string;
-  teamSize?: string;
-  currentChallenge?: string;
-  goalsIn90Days?: string;
-  budgetRange?: string;
-  preferredPlan?: string;
-};
-
-const REQUIRED_FIELDS = [
-  "businessName",
-  "businessType",
-  "contactName",
-  "contactEmail",
-  "currentChallenge",
-  "goalsIn90Days",
-] as const;
 
 async function tryPersistToDb(data: Record<string, string | null>) {
   try {
@@ -96,32 +75,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const missing = REQUIRED_FIELDS.filter((f) => !body[f]);
-  if (missing.length) {
-    return NextResponse.json(
-      { error: `Missing required fields: ${missing.join(", ")}` },
-      { status: 400 }
-    );
+  const result = validateIntake(body);
+  if (!result.ok) {
+    return NextResponse.json({ error: result.error }, { status: result.status });
   }
-
-  const email = body.contactEmail!.trim().toLowerCase();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-  }
-
-  const data = {
-    businessName: body.businessName!.trim(),
-    businessType: body.businessType!.trim(),
-    contactName: body.contactName!.trim(),
-    contactEmail: email,
-    contactPhone: body.contactPhone?.trim() || null,
-    monthlyRevenue: body.monthlyRevenue?.trim() || null,
-    teamSize: body.teamSize?.trim() || null,
-    currentChallenge: body.currentChallenge!.trim(),
-    goalsIn90Days: body.goalsIn90Days!.trim(),
-    budgetRange: body.budgetRange?.trim() || null,
-    preferredPlan: body.preferredPlan?.trim() || null,
-  };
+  const data = result.data;
 
   // Always log full submission — visible in Netlify function logs as a backup
   console.log("📥 INTAKE SUBMISSION:", JSON.stringify({ ...data, _at: new Date().toISOString() }, null, 2));

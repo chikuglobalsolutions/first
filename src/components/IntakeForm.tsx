@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { isValidEmail } from "@/lib/validation";
 
 const BUSINESS_TYPES = [
   "Dental / medical practice",
@@ -76,8 +77,7 @@ export default function IntakeForm() {
     if (current === 3) {
       if (!form.contactName.trim()) return "Your name is required";
       if (!form.contactEmail.trim()) return "Email is required";
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.contactEmail))
-        return "Enter a valid email";
+      if (!isValidEmail(form.contactEmail)) return "Enter a valid email";
     }
     return null;
   };
