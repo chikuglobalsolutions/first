@@ -76,6 +76,15 @@ redirecting to the target URL.
 `ai-systems/industries/[slug]` render from these arrays — add entries there rather than
 creating per-page files.
 
+## Marketing & growth
+
+`MARKETING.md` is the **source of truth** for all growth/marketing work across the four
+brands (PromptEmpire, Chiku Fit, AI Systems/Chiku Global Solutions, QR Generator). It holds
+the daily-ops checklist, per-brand compliant growth playbooks, the run log, and operating
+rules (notably: permission-based growth only — no scraping personal contact data, no bulk
+cold outreach). Approved content drafts live in `content/`. Update `MARKETING.md` as the
+strategy evolves rather than tracking marketing state elsewhere.
+
 ## Environment & deploy
 
 Required env vars (see `.env.example`): `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`,
