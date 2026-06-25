@@ -1,7 +1,15 @@
 import { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXTAUTH_URL || "https://chikuglobalsolutions.com";
+
+  const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((p) => ({
+    url: `${base}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
 
   return [
     {
@@ -10,6 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    {
+      url: `${base}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
+    ...blogPosts,
     {
       url: `${base}/promptempire`,
       lastModified: new Date(),

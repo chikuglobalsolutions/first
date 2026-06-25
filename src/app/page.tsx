@@ -75,6 +75,7 @@ export default function Home() {
             <Link href="/promptempire" className="text-gray-400 hover:text-white transition-colors font-medium hidden sm:block">PromptEmpire</Link>
             <Link href="/chiku-fit" className="text-gray-400 hover:text-white transition-colors font-medium hidden sm:block">Chiku Fit</Link>
             <Link href="/ai-systems" className="text-gray-400 hover:text-white transition-colors font-medium hidden lg:block">AI Systems</Link>
+            <Link href="/blog" className="text-gray-400 hover:text-white transition-colors font-medium hidden sm:block">Blog</Link>
             <a
               href="mailto:chikuglobalsolutions@gmail.com"
               className="text-xs font-semibold border border-white/20 hover:border-white/40 text-white px-4 py-2 rounded-lg transition-colors"
@@ -257,6 +258,7 @@ export default function Home() {
             <Link href="/promptempire" className="hover:text-gray-400 transition-colors">PromptEmpire</Link>
             <Link href="/chiku-fit" className="hover:text-gray-400 transition-colors">Chiku Fit</Link>
             <Link href="/ai-systems" className="hover:text-gray-400 transition-colors">AI Systems</Link>
+            <Link href="/blog" className="hover:text-gray-400 transition-colors">Blog</Link>
           </div>
           <p>© {new Date().getFullYear()} Chiku Global Solutions LLC</p>
         </div>

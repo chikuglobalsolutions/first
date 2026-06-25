@@ -1,0 +1,13 @@
+{
+  "slug": "chiku-fit-bulk-7-day",
+  "brand": "Chiku Fit",
+  "accent": "#34d399",
+  "secondsPerScene": 2.5,
+  "scenes": [
+    { "kicker": "Skinny? Read this", "headline": "It's not genetics.", "sub": "You just eat like a bird." },
+    { "kicker": "The fix", "headline": "Bulk on $7 a day", "sub": "3,400 calories. Real food." },
+    { "headline": "900 cals before 9am", "sub": "Oats + whole milk + peanut butter" },
+    { "headline": "No $80 supplements", "sub": "The food is what builds muscle" }
+  ],
+  "cta": "Link in bio → Chiku Fit"
+}

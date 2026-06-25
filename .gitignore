@@ -34,3 +34,6 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Marketing video working output (mp4 is published to public/ads/ instead)
+marketing/video/out/
