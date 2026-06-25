@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Marketing/growth source of truth:** see [`GROWTH-OS.md`](./GROWTH-OS.md) — the daily
+> routine, content tracker, outreach policy, and per-business playbook for the four Chiku
+> Global brands. This `CLAUDE.md` covers the *codebase*; `GROWTH-OS.md` covers *growth*.
+
 ## Commands
 
 ```bash
