@@ -23,6 +23,14 @@ There is no test framework configured. CI (`.github/workflows/ci.yml`, runs on p
 `main`/`claude/**` and PRs to `main`) is: `npm ci` → `npx prisma generate` →
 `npx tsc --noEmit` → `npm run build`. Treat a clean type-check + build as the merge gate.
 
+## Marketing & growth (source of truth)
+
+`GROWTH.md` is the single source of truth for marketing all four brands and for the daily
+growth routine. It defines the compliant operating rules (no scraping / no unsolicited bulk
+email — organic content + opt-in lists + warm 1:1 B2B outreach only), the audience targets,
+the daily routine, and a run log. Daily content batches live under `marketing/`. Update
+`GROWTH.md` first when a tactic changes; keep this pointer current.
+
 ## Architecture
 
 This is a single Next.js 14 App Router application that serves as a **multi-brand storefront
