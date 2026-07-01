@@ -76,6 +76,14 @@ redirecting to the target URL.
 `ai-systems/industries/[slug]` render from these arrays — add entries there rather than
 creating per-page files.
 
+## Marketing / growth
+
+`MARKETING.md` (repo root) is the **source of truth for all marketing** across the four
+brands — ICPs, hooks, the compliant daily growth engine, the tracker log, and content
+drafts. Update it every marketing run rather than tracking growth work ad hoc. Note: we do
+**not** scrape contacts or send cold email (domain-reputation + legal risk to the shared
+sending domain); growth is opt-in lists + owned content + warm 1:1 partnerships.
+
 ## Environment & deploy
 
 Required env vars (see `.env.example`): `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`,
