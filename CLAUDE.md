@@ -42,7 +42,11 @@ Path alias `@/*` maps to `src/*`. Pages are React Server Components by default.
 `src/lib/prisma.ts` exports a singleton `PrismaClient` (cached on `globalThis` outside
 production to survive hot reloads). Schema is `prisma/schema.prisma`. The project uses
 `prisma db push` (not migrations — `prisma/migrations/` is gitignored). Dev uses SQLite
-(`file:./dev.db`); for production the datasource `provider` is swapped to Postgres.
+(`file:./dev.db`). The datasource `provider` is hardcoded to `sqlite` in `schema.prisma` —
+only the `url` is env-driven (`DATABASE_URL`). `.env.example` notes an intent to swap to
+Postgres for prod, but that swap isn't wired up (Prisma's `provider` field can't be
+parameterized by env var); pointing `DATABASE_URL` at Postgres today would require also
+changing `provider` in the schema first.
 Models split into three groups: NextAuth tables (`User`, `Account`, `Session`,
 `VerificationToken`), QR analytics (`QRCode`, `ScanLog`), and `IntakeSubmission` (agency form).
 
@@ -60,7 +64,9 @@ and the `PLANS` config (`free`/`pro`/`business`, with `priceId`s from env). Subs
 - `POST /api/stripe/webhook` (`force-dynamic`) — verifies the signature against the **raw**
   request body (`req.text()`), then syncs `user.plan` / `stripeSubscriptionId` on
   `checkout.session.completed` and `customer.subscription.updated|deleted`.
-- `/api/admin/seed-stripe` seeds the Stripe catalog.
+- `/api/admin/seed-stripe` seeds the Stripe catalog. It instantiates its own Stripe client
+  rather than importing the one from `src/lib/stripe.ts` — keep both in sync if the pinned
+  API version changes.
 
 When changing webhook handling, preserve the raw-body read — parsing the body first breaks
 signature verification.
@@ -74,7 +80,8 @@ redirecting to the target URL.
 `src/lib/ai-systems-data.ts` is the content source of truth for the `ai-systems` brand
 (`SYSTEMS` and `INDUSTRIES` arrays). The dynamic routes `ai-systems/systems/[slug]` and
 `ai-systems/industries/[slug]` render from these arrays — add entries there rather than
-creating per-page files.
+creating per-page files. The intake form submits to `POST /api/intake`
+(`src/app/api/intake/route.ts`), which persists to the `IntakeSubmission` model.
 
 ## Environment & deploy
 
