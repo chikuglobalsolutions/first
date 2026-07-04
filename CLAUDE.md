@@ -32,6 +32,10 @@ separated by route group under `src/app/`:
 - `promptempire/` — AI prompt packs (sold via Stripe payment links)
 - `chiku-fit/` — fitness guides/programs
 - `ai-systems/` — "Dental AI Agency" marketing site, including an intake form
+- `gta6/` — GTA 6 news/guides hub. Articles live in `src/lib/gta6-data.ts` (`ARTICLES`
+  array) rendered by `gta6/news/[slug]`; a weekly automated routine appends a new roundup
+  article there. Products follow the payment-link pattern (`href: null` renders a waitlist
+  CTA until a Stripe link is pasted in).
 - QR code generator — the app's origin (the package is still named `qrflow`); see
   `QRGenerator`, `/generate`, `/dashboard`, and the scan-tracking route
 

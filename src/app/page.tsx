@@ -52,6 +52,19 @@ const BRANDS = [
     href: "/ai-systems",
     items: ["Lead follow-up automation", "Review generation system", "Booking optimization", "AI sales assistant"],
   },
+  {
+    emoji: "🎮",
+    name: "GTA 6 Hub",
+    tag: "Gaming Guides",
+    tagColor: "text-pink-400",
+    tagBg: "bg-pink-500/10 border-pink-500/20",
+    cardBorder: "hover:border-pink-500/40",
+    desc: "Weekly GTA 6 news roundups plus money-making guides for GTA Online and day-one launch prep — everything tracked until Vice City opens on November 19, 2026.",
+    price: "From $14.99",
+    cta: "Enter the Hub",
+    href: "/gta6",
+    items: ["Weekly news roundups", "GTA Online Cash Blueprint", "Day-One Domination Guide"],
+  },
 ];
 
 const TRUST = [
@@ -75,6 +88,7 @@ export default function Home() {
             <Link href="/promptempire" className="text-gray-400 hover:text-white transition-colors font-medium hidden sm:block">PromptEmpire</Link>
             <Link href="/chiku-fit" className="text-gray-400 hover:text-white transition-colors font-medium hidden sm:block">Chiku Fit</Link>
             <Link href="/ai-systems" className="text-gray-400 hover:text-white transition-colors font-medium hidden lg:block">AI Systems</Link>
+            <Link href="/gta6" className="text-gray-400 hover:text-white transition-colors font-medium hidden lg:block">GTA 6 Hub</Link>
             <a
               href="mailto:chikuglobalsolutions@gmail.com"
               className="text-xs font-semibold border border-white/20 hover:border-white/40 text-white px-4 py-2 rounded-lg transition-colors"
@@ -150,7 +164,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {BRANDS.map((brand) => (
               <div
                 key={brand.name}
@@ -257,6 +271,7 @@ export default function Home() {
             <Link href="/promptempire" className="hover:text-gray-400 transition-colors">PromptEmpire</Link>
             <Link href="/chiku-fit" className="hover:text-gray-400 transition-colors">Chiku Fit</Link>
             <Link href="/ai-systems" className="hover:text-gray-400 transition-colors">AI Systems</Link>
+            <Link href="/gta6" className="hover:text-gray-400 transition-colors">GTA 6 Hub</Link>
           </div>
           <p>© {new Date().getFullYear()} Chiku Global Solutions LLC</p>
         </div>
