@@ -137,6 +137,38 @@ const CATALOG = [
       { nickname: "Monthly $997", amount: 99700, currency: "usd", recurring: "month" },
     ],
   },
+
+  // ── GTA 6 Hub ────────────────────────────────────────────────
+  {
+    key: "gta_cash_blueprint",
+    name: "GTA Online Cash Blueprint 2026",
+    description:
+      "The fastest legit money-making methods in GTA Online, ranked by cash per hour. Solo-friendly routes, heist prep checklists, passive-income tier list. Instant PDF.",
+    metadata: { brand: "GTA 6 Hub", category: "digital_product" },
+    prices: [
+      { nickname: "One-time $14.99", amount: 1499, currency: "usd", recurring: null },
+    ],
+  },
+  {
+    key: "gta_day_one_guide",
+    name: "GTA 6 Day-One Domination Guide",
+    description:
+      "First-48-hours roadmap for GTA 6: early money methods, best PS5 settings, unlock order. Delivered launch week with free updates through launch month.",
+    metadata: { brand: "GTA 6 Hub", category: "digital_product", popular: "true" },
+    prices: [
+      { nickname: "One-time $19.99", amount: 1999, currency: "usd", recurring: null },
+    ],
+  },
+  {
+    key: "gta_launch_bundle",
+    name: "GTA 6 Launch Bundle",
+    description:
+      "The full GTA 6 Hub stack: Cash Blueprint 2026 (instant), Day-One Domination Guide (launch week), and the 100% completion tracker. All launch-month updates free.",
+    metadata: { brand: "GTA 6 Hub", category: "digital_product" },
+    prices: [
+      { nickname: "One-time $29.99", amount: 2999, currency: "usd", recurring: null },
+    ],
+  },
 ];
 
 export async function POST(request: Request) {
