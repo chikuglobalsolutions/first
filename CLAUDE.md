@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Marketing / growth work lives in [`MARKETING.md`](./MARKETING.md)** — that file is the source of
+> truth for customer acquisition, content, and the daily growth routine across all four businesses.
+> Keep this file for code/architecture guidance; put marketing status, playbooks, and logs there.
+
 ## Commands
 
 ```bash
