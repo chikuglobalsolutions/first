@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Marketing / growth work:** `GROWTH.md` is the source of truth. Read and update it for
+> any content, marketing, or brand-growth task. Note: we do **not** scrape contact data or
+> send unsolicited/cold email — growth is consent-based (organic content + opt-in lists).
+
 ## Commands
 
 ```bash
