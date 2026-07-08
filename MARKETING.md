@@ -151,6 +151,13 @@ Rule: every row is a *specific named* business/creator with a real reason. No li
 |----------|-------|------|--------|
 | ✅ done | All | Expand `sitemap.ts` from 5 → 24 URLs (all hubs + 18 dynamic AI-Systems pages) | Shipped 2026-07-08 |
 | ✅ done | AI Systems | Add `/ai-systems` to `robots.ts` allow list | Shipped 2026-07-08 |
+| ✅ done | All | Centralize payment links in `src/lib/commerce.ts` (was copy-pasted in 6+ files) | Shipped 2026-07-08 |
+| ✅ done | All | Delete orphaned `Hero`/`Features`/`Pricing` components | Shipped 2026-07-08 |
+| **P2** | All | Shared `SiteHeader`/`SiteFooter` + `ui/` primitives (see SITE-PLAN.md) — needs visual QA | Planned |
+| **P3** | AI Systems | Landing imports canonical `SYSTEMS`/`INDUSTRIES`; cards link to detail pages | Planned |
+| **P3** | All | Merge four About pages into one company `/about` | Planned |
+| **P4** | All | Replace emoji-icons with real SVG icon set; de-gimmick heroes | Planned |
+| **P4** | QRFlow | Reskin `/login`,`/dashboard`,`/generate`,`/delivery` to dark theme; add to global nav | Planned |
 | High | All | Add per-page `metadata` (title/description/OG) to brand hub pages | Backlog |
 | High | Chiku Fit | Add Gumroad checkout URLs (revenue blocker) | Needs owner |
 | Med | PromptEmpire | Add JSON-LD Product schema for the 3 Stripe products | Backlog |
@@ -170,6 +177,11 @@ Rule: every row is a *specific named* business/creator with a real reason. No li
 
 ## Changelog
 
+- **2026-07-08 (site consolidation)** — Full audit of all 24 pages → `SITE-PLAN.md` (duplication
+  map + target IA + 4-phase plan to merge the brands into one cohesive site). Phase 1 shipped:
+  `src/lib/commerce.ts` (centralized all payment links), deleted orphaned `Hero`/`Features`/
+  `Pricing` components. Phases 2–4 (shared chrome, data unification, de-gimmick, island reskin)
+  staged for visual QA before hitting the live storefront.
 - **2026-07-08** — Created MARKETING.md source of truth. Consolidated brand/price data from
   `OBSIDIAN-UPDATE.md`. Shipped SEO fix: sitemap 5→24 URLs incl. 18 dynamic AI-Systems pages +
   robots allow-list. Created `marketing/content-queue.md` with first content batch for all 4
