@@ -76,6 +76,16 @@ redirecting to the target URL.
 `ai-systems/industries/[slug]` render from these arrays — add entries there rather than
 creating per-page files.
 
+## Marketing & growth
+
+`MARKETING.md` is the **source of truth** for all marketing, content, and growth across the four
+brands (PromptEmpire, Chiku Fit, AI Systems, QRFlow). It is maintained by a daily Claude routine
+that pulls metrics, drafts content, researches warm outreach, and ships one SEO/conversion task
+per run. Read `MARKETING.md` before doing any marketing work; content drafts live in
+`marketing/content-queue.md`. Key rule: **opt-in / owner-approved marketing only — no scraping,
+no cold email to scraped lists** (it would blocklist the sending domain and break Stripe/auth
+email). Buffer is the intended social scheduler but is not yet connected — route via Zapier/Make.
+
 ## Environment & deploy
 
 Required env vars (see `.env.example`): `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`,
