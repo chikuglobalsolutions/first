@@ -126,8 +126,19 @@ export async function POST(request: Request) {
   // Always log full submission — visible in Netlify function logs as a backup
   console.log("📥 INTAKE SUBMISSION:", JSON.stringify({ ...data, _at: new Date().toISOString() }, null, 2));
 
-  // Best-effort persist + notify, both non-fatal
-  await Promise.allSettled([tryPersistToDb(data), tryEmailViaResend(data)]);
+  // Best-effort persist + notify + automation, all non-fatal
+  const { sendToAutomation } = await import("@/lib/automation");
+  await Promise.allSettled([
+    tryPersistToDb(data),
+    tryEmailViaResend(data),
+    sendToAutomation("intake.submitted", {
+      businessName: data.businessName,
+      businessType: data.businessType,
+      contactEmail: data.contactEmail,
+      contactName: data.contactName,
+      preferredPlan: data.preferredPlan,
+    }),
+  ]);
 
   return NextResponse.json({ ok: true });
 }

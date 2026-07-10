@@ -32,10 +32,14 @@ export async function GET(request: Request) {
     console.warn("unsubscribe: db update failed (non-fatal):", err instanceof Error ? err.message : err);
   }
 
-  // Best-effort mirror to Mailchimp.
+  // Best-effort mirror to Mailchimp + automation, both non-fatal.
   try {
     const { unsubscribeFromMailchimp } = await import("@/lib/mailchimp");
-    await unsubscribeFromMailchimp(email);
+    const { sendToAutomation } = await import("@/lib/automation");
+    await Promise.allSettled([
+      unsubscribeFromMailchimp(email),
+      sendToAutomation("subscriber.unsubscribed", { email }),
+    ]);
   } catch {
     /* non-fatal */
   }

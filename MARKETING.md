@@ -115,6 +115,9 @@ as the starting bank; log what performs in the tracker below and make more of it
 | Mailchimp audience sync | ✅ built | `src/lib/mailchimp.ts`, tags by brand; skipped if unconfigured |
 | Unsubscribe handling | ✅ built | `/api/unsubscribe` (HMAC token) → status flip + Mailchimp + `/unsubscribed` |
 | Welcome automation (Mailchimp-native) | 🟡 optional | app already sends the welcome; a Mailchimp journey can layer on the brand tag |
+| Automation webhook (Zapier/Make) | ✅ built | `src/lib/automation.ts` — fires subscriber/intake events to `AUTOMATION_WEBHOOK_URL`; see `AUTOMATION.md` |
+| Buffer content queue | ✅ seeded | `content/buffer-queue.md` — paste-ready posts per brand |
+| Social accounts + Buffer/Zapier connection | ⬜ manual (you) | account creation + logins can't be automated (ToS); steps in `AUTOMATION.md` |
 | Content bank | 🟡 seeded | `/content/*` — expand weekly |
 
 **Config for sends (see `.env.example`):** `RESEND_API_KEY` + `MARKETING_FROM_EMAIL`

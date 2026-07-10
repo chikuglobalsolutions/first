@@ -134,6 +134,7 @@ export async function POST(request: Request) {
   //  - sync to Mailchimp audience (tagged by brand) for broadcasts
   const { buildWelcomeEmail, sendEmail } = await import("@/lib/email");
   const { syncSubscriber } = await import("@/lib/mailchimp");
+  const { sendToAutomation } = await import("@/lib/automation");
   const welcome = buildWelcomeEmail(brand, email);
 
   await Promise.allSettled([
@@ -141,6 +142,7 @@ export async function POST(request: Request) {
     tryNotify(email, brand, source),
     sendEmail({ to: email, subject: welcome.subject, html: welcome.html }),
     syncSubscriber(email, brand),
+    sendToAutomation("subscriber.created", { email, brand, source, name: data.name }),
   ]);
 
   return NextResponse.json({ ok: true });

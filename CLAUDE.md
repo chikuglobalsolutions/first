@@ -104,6 +104,9 @@ Delivery + nurture loop (all side effects are best-effort / non-fatal):
 - `GET /api/unsubscribe` — HMAC-token (`src/lib/subscribe-token.ts`, signed with
   `NEXTAUTH_SECRET`) verified one-click unsubscribe → flips `EmailSubscriber.status`,
   mirrors to Mailchimp, redirects to `/unsubscribed`. Every marketing email includes this link.
+- `src/lib/automation.ts` — posts `subscriber.created` / `subscriber.unsubscribed` /
+  `intake.submitted` events to `AUTOMATION_WEBHOOK_URL` (a Zapier/Make catch hook) so
+  external scenarios (Buffer, Sheets, Slack) fan out with no code changes. See `AUTOMATION.md`.
 
 ## Environment & deploy
 
