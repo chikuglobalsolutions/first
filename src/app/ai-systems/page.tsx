@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import IntakeForm from "@/components/IntakeForm";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export const metadata: Metadata = {
   title: "Chiku AI Systems — AI-Powered Growth Systems for Any Business",
@@ -371,6 +372,20 @@ export default function AISystemsPage() {
           </div>
 
           <IntakeForm />
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-16 px-5 border-t border-white/5">
+        <div className="max-w-lg mx-auto">
+          <NewsletterSignup
+            brand="ai-systems"
+            source="ai-systems-page"
+            heading="Not ready for a call? Get the playbook."
+            subheading="Join for a free AI-automation checklist and weekly breakdowns of systems that win back staff hours."
+            cta="Send me the checklist"
+            incentive="Instant: the 12-point AI automation checklist for service businesses."
+          />
         </div>
       </section>
 

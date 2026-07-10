@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export const metadata: Metadata = {
   title: "Chiku Global Solutions LLC — Built for Neurodivergent Entrepreneurs",
@@ -242,6 +243,19 @@ export default function Home() {
               Browse Chiku Fit
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-16 px-5 border-t border-white/5">
+        <div className="max-w-lg mx-auto">
+          <NewsletterSignup
+            brand="chiku"
+            source="home-page"
+            heading="One email. Every launch."
+            subheading="Get notified when we drop new prompt packs, fitness programs, tools, and deals across Chiku Global."
+            cta="Keep me posted"
+          />
         </div>
       </section>
 

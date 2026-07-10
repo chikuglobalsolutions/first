@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export const metadata: Metadata = {
   title: "Chiku Fit — Build Mass on a Budget | Training Guides for Skinny Beginners",
@@ -374,6 +375,20 @@ export default function ChikuFitPage() {
             Start the 8-Week Mass Accelerator — $49.99 →
           </a>
           <p className="mt-5 text-xs text-gray-600">Instant PDF delivery · 14-day refund guarantee · One-time payment</p>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-16 px-5 border-t border-white/5">
+        <div className="max-w-lg mx-auto">
+          <NewsletterSignup
+            brand="chiku-fit"
+            source="chiku-fit-page"
+            heading="Free: the Broke Bulk grocery list"
+            subheading="Join for a free budget grocery list that hits your protein under $50/week — plus weekly training tips."
+            cta="Send me the free list"
+            incentive="Instant: high-protein grocery list under $50/week."
+          />
         </div>
       </section>
 

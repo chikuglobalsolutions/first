@@ -76,6 +76,23 @@ redirecting to the target URL.
 `ai-systems/industries/[slug]` render from these arrays — add entries there rather than
 creating per-page files.
 
+## Marketing & growth
+
+`MARKETING.md` (repo root) is the **source of truth** for how the brands are
+marketed and grown — the opt-in funnel, content system, cadence, and results
+tracker. Keep it updated as the strategy evolves. Growth is **opt-in only**: never
+scrape contacts or send unsolicited email; only market to people who signed up on
+the site (recorded in `EmailSubscriber` with consent proof).
+
+Funnel plumbing already in the codebase:
+- `EmailSubscriber` model (`prisma/schema.prisma`) — stores email, brand, source,
+  and `consent`/`consentText`/`ip`/timestamp as opt-in evidence.
+- `POST /api/subscribe` — validates + upserts a subscriber (dedupes on email),
+  best-effort admin notify. Mirrors the `/api/intake` non-fatal-side-effects pattern.
+- `NewsletterSignup` (`src/components/NewsletterSignup.tsx`) — per-brand themed
+  opt-in form (with a consent checkbox), placed on all four brand pages.
+- `content/<brand>/` — organic launch content bank per brand.
+
 ## Environment & deploy
 
 Required env vars (see `.env.example`): `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`,

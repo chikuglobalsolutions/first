@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export const metadata: Metadata = {
   title: "PromptEmpire — 500 AI Business Prompts for Neurodivergent Entrepreneurs",
@@ -431,6 +432,20 @@ export default function PromptEmpirePage() {
             {" · "}
             <a href={STRIPE_LINKS.freelancer} className="text-gray-400 hover:text-white underline">Command Center $47</a>
           </p>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-16 px-5 border-t border-white/5">
+        <div className="max-w-lg mx-auto">
+          <NewsletterSignup
+            brand="promptempire"
+            source="promptempire-page"
+            heading="Get 10 free prompts + new drops"
+            subheading="Join the list for a free starter pack and first dibs on new prompt bundles."
+            cta="Send me the free 10"
+            incentive="Instant: 10 of our best-selling prompts, free."
+          />
         </div>
       </section>
 
