@@ -127,7 +127,21 @@ export async function POST(request: Request) {
 
   console.log("📥 NEW SUBSCRIBER:", JSON.stringify({ ...data, _at: new Date().toISOString() }, null, 2));
 
-  await Promise.allSettled([tryPersist(data), tryNotify(email, brand, source)]);
+  // All side effects are best-effort and non-fatal:
+  //  - persist the opt-in record
+  //  - notify admin
+  //  - deliver the welcome/lead-magnet email
+  //  - sync to Mailchimp audience (tagged by brand) for broadcasts
+  const { buildWelcomeEmail, sendEmail } = await import("@/lib/email");
+  const { syncSubscriber } = await import("@/lib/mailchimp");
+  const welcome = buildWelcomeEmail(brand, email);
+
+  await Promise.allSettled([
+    tryPersist(data),
+    tryNotify(email, brand, source),
+    sendEmail({ to: email, subject: welcome.subject, html: welcome.html }),
+    syncSubscriber(email, brand),
+  ]);
 
   return NextResponse.json({ ok: true });
 }

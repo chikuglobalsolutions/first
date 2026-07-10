@@ -93,6 +93,18 @@ Funnel plumbing already in the codebase:
   opt-in form (with a consent checkbox), placed on all four brand pages.
 - `content/<brand>/` — organic launch content bank per brand.
 
+Delivery + nurture loop (all side effects are best-effort / non-fatal):
+- `src/lib/lead-magnets.ts` — the 3 free lead magnets (source of truth for both the
+  `/free/[slug]` delivery pages and the welcome email; noindex, opt-in delivery).
+- `src/lib/email.ts` — Resend HTTP wrapper + `buildWelcomeEmail`; the subscribe route
+  sends the brand's welcome/lead-magnet email. Needs `RESEND_API_KEY`,
+  `MARKETING_FROM_EMAIL`, `COMPANY_MAILING_ADDRESS` (CAN-SPAM footer).
+- `src/lib/mailchimp.ts` — best-effort audience sync (tag by brand) via the Marketing
+  API; skipped unless `MAILCHIMP_API_KEY`/`MAILCHIMP_AUDIENCE_ID`/`MAILCHIMP_SERVER_PREFIX` set.
+- `GET /api/unsubscribe` — HMAC-token (`src/lib/subscribe-token.ts`, signed with
+  `NEXTAUTH_SECRET`) verified one-click unsubscribe → flips `EmailSubscriber.status`,
+  mirrors to Mailchimp, redirects to `/unsubscribed`. Every marketing email includes this link.
+
 ## Environment & deploy
 
 Required env vars (see `.env.example`): `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`,

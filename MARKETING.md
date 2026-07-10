@@ -110,14 +110,24 @@ as the starting bank; log what performs in the tracker below and make more of it
 | `EmailSubscriber` model | ✅ built | consent + source + ip + timestamp stored |
 | `/api/subscribe` route | ✅ built | validates, dedupes (upsert), non-fatal notify |
 | `NewsletterSignup` component | ✅ built | on all 4 brand pages, per-brand theming |
-| Lead-magnet delivery email | ⬜ to build | promised freebies must actually send |
-| Mailchimp audience sync | ⬜ to build | push subscribers → tagged audience |
-| Welcome automation | ⬜ to build | in Mailchimp |
-| Unsubscribe handling | ⬜ to build | link + status flip to `unsubscribed` |
+| Lead magnets (3) | ✅ built | `src/lib/lead-magnets.ts` → `/free/<slug>` pages |
+| Welcome/delivery email | ✅ built | `src/lib/email.ts`, sent on subscribe, links the magnet |
+| Mailchimp audience sync | ✅ built | `src/lib/mailchimp.ts`, tags by brand; skipped if unconfigured |
+| Unsubscribe handling | ✅ built | `/api/unsubscribe` (HMAC token) → status flip + Mailchimp + `/unsubscribed` |
+| Welcome automation (Mailchimp-native) | 🟡 optional | app already sends the welcome; a Mailchimp journey can layer on the brand tag |
 | Content bank | 🟡 seeded | `/content/*` — expand weekly |
 
-Env needed for sends: `RESEND_API_KEY` (already referenced by intake route) and/or
-Mailchimp connection. `INTAKE_NOTIFY_EMAIL` controls where new-subscriber alerts go.
+**Config for sends (see `.env.example`):** `RESEND_API_KEY` + `MARKETING_FROM_EMAIL`
+power the welcome email; `COMPANY_MAILING_ADDRESS` fills the CAN-SPAM footer;
+`MAILCHIMP_API_KEY` / `MAILCHIMP_AUDIENCE_ID` / `MAILCHIMP_SERVER_PREFIX` enable
+audience sync (all optional — signup still works if unset). Unsubscribe links are
+signed with `NEXTAUTH_SECRET`.
+
+**The lead magnets** (`src/lib/lead-magnets.ts`) are the single source of truth for
+both the delivery page and the email, so they never drift:
+- PromptEmpire → `promptempire-starter-10` (10 free prompts)
+- Chiku Fit → `broke-bulk-grocery-list` (budget high-protein grocery list)
+- Chiku AI Systems → `ai-automation-checklist` (12-point checklist)
 
 ---
 
@@ -139,16 +149,25 @@ Update every Monday. Keep it honest — real numbers only.
   "scrape IG emails and cold-blast them" idea (ToS + spam-law + account-ban risk)
   with an opt-in funnel: on-site capture → consent-tracked list → Mailchimp nurture.
   Slower to start, but it compounds and can't get the accounts banned.
+- **2026-07-10 (pt 2)** — Completed the full loop in code: 3 real lead magnets
+  served at `/free/<slug>`, a per-brand welcome email that delivers them, Mailchimp
+  audience sync tagged by brand, and a signed one-click unsubscribe. Everything is
+  best-effort/non-fatal so a third-party outage never breaks signup. Now it's just
+  env config + turning on the content cadence.
 
 ---
 
 ## 8. Open loops / next best actions (ranked)
 
-1. **Produce the three lead magnets** (PromptEmpire free-10 PDF, Chiku Fit grocery
-   list PDF, AI Systems checklist) and wire delivery — the signup forms promise
-   them right now.
-2. **Wire Mailchimp sync + welcome automation** so a signup actually starts a
-   nurture sequence.
+The capture → deliver → nurture → unsubscribe loop is now built end-to-end in code.
+Remaining work is operational + config:
+
+1. **Set the production env vars** so emails actually send: `RESEND_API_KEY`,
+   `MARKETING_FROM_EMAIL` (a verified domain in Resend), `COMPANY_MAILING_ADDRESS`
+   (real address for the CAN-SPAM footer), and the `MAILCHIMP_*` trio.
+2. **Verify a sending domain in Resend** and send yourself a test signup to confirm
+   the welcome email + lead-magnet link + unsubscribe link all work.
 3. **Ship the content bank to a scheduler** and start posting 3×/week per brand.
-4. **Add unsubscribe route** + `status` flip before the first broadcast.
+4. **(Optional) Add a Mailchimp welcome journey** triggered by the brand tag if you
+   want Mailchimp-native automation on top of the app's welcome email.
 5. **Instrument conversion** (UTM on bio links → signup → purchase) so §6 has real data.
