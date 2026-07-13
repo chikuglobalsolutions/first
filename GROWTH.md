@@ -1,8 +1,8 @@
 # GROWTH.md — Chiku Global Solutions: Marketing & Growth Source of Truth
 
 > **This is the one canonical marketing/growth doc for the four brands.** It replaces and
-> consolidates 17 near-duplicate tracker PRs (#4, #8, #9, #10, #12, #13, #14, #15, #17, #18,
-> #19, #20, #22, #23, #24, #25 — see "Consolidation note" at the bottom) that accumulated
+> consolidates 17 near-duplicate tracker PRs (#4, #8, #9, #10, #12, #13, #14, #15, #16, #17,
+> #18, #19, #20, #22, #23, #24, #25 — see "Consolidation note" at the bottom) that accumulated
 > because each daily-marketing session opened its own version instead of updating one file.
 > **Going forward: edit this file in place. Do not open a new MARKETING.md / GROWTH.md /
 > GROWTH-TRACKER.md / GROWTH-OS.md PR.**
@@ -326,11 +326,11 @@ revenue per brand. Without these, "growth" can't be measured against a real star
 
 ## Consolidation note
 
-This file replaces the following 16 duplicate marketing/growth-tracker PRs, all opened
+This file replaces the following 17 duplicate marketing/growth-tracker PRs, all opened
 independently by parallel automated sessions without anyone merging or closing the earlier
-ones first: **#4, #8, #9, #10, #12, #13, #14, #15, #17, #18, #19, #20, #22, #23, #24, #25**.
-Every distinct idea, tactic, template, and data point found across all of them has been
-folded into the sections above — nothing was dropped. Three of those PRs (**#16, #24, #25**)
+ones first: **#4, #8, #9, #10, #12, #13, #14, #15, #16, #17, #18, #19, #20, #22, #23, #24,
+#25**. Every distinct idea, tactic, template, and data point found across all of them has
+been folded into the sections above — nothing was dropped. Three of those PRs (**#16, #24, #25**)
 also contain real, working application code (a blog + free video-ad generator; SEO/sitemap
 fixes + a commerce-link refactor; a full opt-in email-capture funnel) that goes beyond the
 tracker doc itself — that code was deliberately **not** touched by this consolidation and
