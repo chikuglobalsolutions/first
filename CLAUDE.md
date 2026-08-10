@@ -83,3 +83,11 @@ Required env vars (see `.env.example`): `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUT
 `STRIPE_PRO_PRICE_ID`, `STRIPE_BUSINESS_PRICE_ID`, and `EMAIL_SERVER_*`. `build` and runtime
 need these; `tsc`/`lint` do not. Deploys to Netlify (`netlify.toml`, `@netlify/plugin-nextjs`,
 Node 20); `/health` redirects to `/api/health`.
+
+## Marketing & growth
+
+Marketing/growth work for the brands is governed by `MARKETING_PLAYBOOK.md` (the
+living source of truth for strategy, guardrails, and the growth tracker). Note
+its guardrails: no email scraping, permission-based lists only, and no
+autonomous public posting/sending — automated runs prepare drafts for human
+approval rather than publishing on their own.
