@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Marketing / growth work:** see `GROWTH-TRACKER.md` (source of truth for the four
+> Chiku Global businesses). Note: automated Instagram email scraping and cold-email blasting
+> are intentionally out of scope there (ToS + anti-spam law) — use the opt-in/organic engine
+> documented in that file instead.
+
 ## Commands
 
 ```bash
