@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Marketing / growth work:** `GROWTH-TRACKER.md` is the source of truth for the four
+> businesses' marketing, content, and lead-gen (this file governs development only). Content
+> drafts live in `/marketing/`. Note: the growth routine drafts and prepares content but does
+> **not** send email, post to social, scrape any platform, or contact third parties without a
+> human approving that specific action — see `GROWTH-TRACKER.md` §0 and §4 for the rationale.
+
 ## Commands
 
 ```bash
