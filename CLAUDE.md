@@ -41,10 +41,15 @@ Path alias `@/*` maps to `src/*`. Pages are React Server Components by default.
 ### Data layer (Prisma)
 `src/lib/prisma.ts` exports a singleton `PrismaClient` (cached on `globalThis` outside
 production to survive hot reloads). Schema is `prisma/schema.prisma`. The project uses
-`prisma db push` (not migrations — `prisma/migrations/` is gitignored). Dev uses SQLite
-(`file:./dev.db`); for production the datasource `provider` is swapped to Postgres.
-Models split into three groups: NextAuth tables (`User`, `Account`, `Session`,
-`VerificationToken`), QR analytics (`QRCode`, `ScanLog`), and `IntakeSubmission` (agency form).
+`prisma db push` (not migrations — `prisma/migrations/` is gitignored). The datasource
+`provider` is `postgresql`, so `DATABASE_URL` must be a Postgres connection string in dev
+and prod alike. Production runs on a dedicated Supabase project (`chiku-storefront`); point
+dev at a Postgres instance too (e.g. a Supabase branch or a local Postgres). Tables have
+RLS enabled with no policies — Prisma connects as the `postgres` owner and bypasses RLS,
+while the anon/PostgREST roles are blocked. Models split into four groups: NextAuth tables
+(`User`, `Account`, `Session`, `VerificationToken`), QR analytics (`QRCode`, `ScanLog`),
+`IntakeSubmission` (agency form), and `Purchase` (PromptEmpire payment-link orders, written
+by the Stripe webhook).
 
 ### Auth (NextAuth v4)
 `src/lib/auth.ts` defines `authOptions`: email magic-link provider (Resend SMTP) with the
