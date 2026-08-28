@@ -5,19 +5,26 @@
 - PR #1 open: full PromptEmpire Next.js sales page
 - CI: GitHub Actions builds + type-checks every push
 
-## 💳 Stripe Links (All Live)
+## 💳 Stripe Links (All Live — verified against live Stripe account)
 | Product | Price | Link |
 |---------|-------|------|
-| 500 AI Business Prompts | $37 | https://buy.stripe.com/5kA5kFbpgcTY5Sg4gh |
+| 500 AI Business Prompts | $37 | https://buy.stripe.com/bJeeVf50K8DMcgEbLU08g00 |
 | Freelancer Command Center | $47 | https://buy.stripe.com/cNi5kF50Kf2a6WkbLU08g01 |
-| Empire Bundle | $67 | https://buy.stripe.com/7sI8wR50Kf2adoI28X |
+| Empire Bundle | $67 | https://buy.stripe.com/5kQ3cx8cWf2a5SgeY608g02 |
+
+> **Pending:** every payment link's `after_completion.redirect.url` still points at
+> `https://promptempire-chiku.netlify.app/delivery.html` (the old ungated page). Once
+> the gated `/delivery` flow on `chikuglobalsolutions.com` ships, update each link's
+> success URL in the Stripe Dashboard to
+> `https://chikuglobalsolutions.com/delivery?session_id={CHECKOUT_SESSION_ID}` so
+> customers land on the verified delivery experience.
 
 ## 📦 Digital Products (Gumroad — Chiku Fit)
 | Product | Status |
 |---------|--------|
-| 8-Week Mass Accelerator | Built — needs Gumroad checkout URL |
-| Broke Bulk Meal Plan Pack | Built — needs Gumroad checkout URL |
-| Complete Bulking System (Bundle) | Built — needs Gumroad checkout URL |
+| 8-Week Mass Accelerator | **Live** — https://chikuglobal.gumroad.com/l/teliz |
+| Broke Bulk Meal Plan Pack | Built — needs Gumroad checkout URL (storefront shows "Coming soon") |
+| Complete Bulking System (Bundle) | Built — needs Gumroad checkout URL (storefront shows "Coming soon") |
 
 ## 🚀 Deploy Checklist (Do Today)
 - [ ] Merge PR #1 on GitHub

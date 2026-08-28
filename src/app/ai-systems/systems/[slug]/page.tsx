@@ -8,10 +8,11 @@ export async function generateStaticParams() {
   return SYSTEMS.map((s) => ({ slug: s.slug }));
 }
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const sys = getSystem(params.slug);
+  const { slug } = await params;
+  const sys = getSystem(slug);
   if (!sys) return { title: "System not found" };
   return {
     title: `${sys.name} — Chiku AI Systems`,
@@ -19,8 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function SystemDetailPage({ params }: Props) {
-  const sys = getSystem(params.slug);
+export default async function SystemDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const sys = getSystem(slug);
   if (!sys) notFound();
 
   return (

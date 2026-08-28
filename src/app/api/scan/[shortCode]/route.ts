@@ -3,10 +3,10 @@ import { prisma } from "@/lib/prisma";
 import { headers } from "next/headers";
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { shortCode: string } }
+  _req: NextRequest,
+  { params }: { params: Promise<{ shortCode: string }> }
 ) {
-  const { shortCode } = params;
+  const { shortCode } = await params;
 
   const qr = await prisma.qRCode.findUnique({ where: { shortCode } });
 
@@ -14,7 +14,7 @@ export async function GET(
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  const headersList = headers();
+  const headersList = await headers();
   const ua = headersList.get("user-agent") || "";
   const device = /mobile|android|iphone|ipad/i.test(ua) ? "mobile" : "desktop";
 

@@ -10,8 +10,9 @@ export const metadata = { title: "Dashboard – QRFlow" };
 export default async function DashboardPage({
   searchParams,
 }: {
-  searchParams: { upgraded?: string };
+  searchParams: Promise<{ upgraded?: string }>;
 }) {
+  const { upgraded } = await searchParams;
   const session = await getServerSession(authOptions);
   if (!session?.user) {
     redirect("/login?redirect=/dashboard");
@@ -32,7 +33,7 @@ export default async function DashboardPage({
     <>
       <Navbar />
       <main className="pt-20 min-h-screen bg-gray-50">
-        {searchParams.upgraded === "1" && (
+        {upgraded === "1" && (
           <div className="max-w-5xl mx-auto px-4 pt-4">
             <div className="bg-green-50 border border-green-100 text-green-800 rounded-xl px-5 py-4 text-sm font-medium">
               🎉 Welcome to Pro! Your account has been upgraded. Enjoy analytics and custom branding.
