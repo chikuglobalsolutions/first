@@ -83,3 +83,11 @@ Required env vars (see `.env.example`): `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUT
 `STRIPE_PRO_PRICE_ID`, `STRIPE_BUSINESS_PRICE_ID`, and `EMAIL_SERVER_*`. `build` and runtime
 need these; `tsc`/`lint` do not. Deploys to Netlify (`netlify.toml`, `@netlify/plugin-nextjs`,
 Node 20); `/health` redirects to `/api/health`.
+
+## Marketing
+
+Marketing/growth for the four brands is tracked in **`MARKETING.md`** (the growth
+source of truth) with dated content batches under `marketing/`. That file, not this
+one, governs marketing decisions. Note its §0 boundary: growth is done via
+first-party, opt-in content — **no scraping contact info off Instagram/other
+platforms and no unsolicited cold-email/DM blasts** (ToS + anti-spam law).
