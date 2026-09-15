@@ -209,6 +209,59 @@ they're legal and they don't burn your domain.
 
 ---
 
+## 🗓️ Scheduled task prompt (copy this into the web scheduler)
+
+Replace the old "email-scrape Instagram" scheduled task with a new daily task
+using **exactly** this prompt. It does the routine the compliant way.
+
+```text
+You are running the daily growth routine for Chiku Global Solutions' four
+businesses (PromptEmpire, Chiku Fit, AI Systems dental agency, QR Generator),
+all in the chikuglobalsolutions/first repo.
+
+FIRST: read GROWTH-TRACKER.md in full. It is the source of truth and its HARD
+RULE governs this run: never scrape emails or personal contact data from
+Instagram or anywhere else, and never build cold lists from harvested data.
+Collect contact info only via the "Legal lead & contact collection playbook"
+in that file (opt-in lead magnets, Meta/Instagram Lead Ads, LinkedIn Lead Gen
+Forms, licensed B2B data + public business listings, creator collaborations).
+
+Then do the daily loop:
+1. CREATOR/COMMUNITY SCAN: identify ONE relevant creator or community per day
+   (10k+ followers, same niche as one of the brands) using public/official
+   means only (WebSearch, platform search). Record handle, niche, follower
+   estimate, and WHY it fits. Frame it as a collaboration / affiliate /
+   engagement target — never as a data source to extract from.
+2. CONTENT: draft ONE ready-to-post piece of content per brand (hook, body,
+   CTA, suggested channel). Stage the drafts in the tracker's Daily Log for the
+   owner to review. Do NOT publish, post, DM, or email anything yourself.
+3. LEGAL LEAD SOURCES: propose or advance one concrete legal lead-capture step
+   (e.g. lead-magnet copy, a Lead Ads form spec, an opt-in landing page, the
+   NewsletterSubscriber + /api/subscribe opt-in endpoint). If it is code,
+   implement it, type-check with `npx tsc --noEmit`, and commit.
+4. BUSINESS CHECK: note anything blocking revenue (missing checkout URLs,
+   broken pages, unfollowed IntakeSubmission leads) in the Backlog.
+5. LOG: append a dated entry to the Daily Log with items 1-4 and one learning.
+   If you found a better tactic, update the relevant playbook section and bump
+   "Last updated". Keep GROWTH-TRACKER.md the single source of truth; keep
+   CLAUDE.md focused on engineering (only the pointer line to this file).
+
+Commit and push to the designated branch and make sure a draft PR exists.
+
+NOTIFY the owner (PushNotification) only when there is something actionable:
+drafts ready for approval, a revenue blocker, a new legal lead step ready to
+wire, or the routine could not run. If nothing changed, stay silent.
+```
+
+Steps to swap it in (owner):
+1. In the Claude Code web app, open scheduled tasks and **delete/pause the old
+   task** whose prompt says "email scrape."
+2. Create a new daily task with the prompt above (schedule at an off-minute,
+   e.g. 8:57am).
+3. Point it at the `chikuglobalsolutions/first` repo.
+
+---
+
 ## How to run this routine each day
 1. Read this file top to bottom.
 2. Do the 4-step compliant loop above.
