@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Growth/marketing ops** for the four brands live in `GROWTH-TRACKER.md` (the
+> source of truth for the recurring growth routine). This file (`CLAUDE.md`)
+> stays focused on engineering/dev guidance.
+
 ## Commands
 
 ```bash
