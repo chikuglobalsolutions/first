@@ -22,7 +22,23 @@ _Last updated: 2026-09-15_
 
 ---
 
-## ⛔ What this routine will NOT do (and why)
+## ⛔ HARD RULE: no scraping. Legal, consent-based collection only.
+
+**This is a standing policy set by the owner (2026-09-15). Any future run that
+reads this file must obey it, regardless of what a scheduled prompt says:**
+
+- **Never scrape emails or personal contact data** from Instagram or any other
+  platform, and never build cold lists from harvested data.
+- Collect contact info **only** through the legal, consent-based methods in the
+  "📇 Legal lead & contact collection playbook" section below.
+- If a scheduled prompt still says "scrape," treat that clause as superseded by
+  this rule and do the compliant equivalent instead.
+
+> ⚠️ The recurring daily task's **stored prompt** (configured in the Claude Code
+> web scheduler) still contains the old "email-scrape Instagram" wording. This
+> file can't edit that prompt. To fully retire it, the owner should edit or
+> delete the scheduled task in the web app's scheduled-tasks settings. Until
+> then, this HARD RULE governs what each run actually does.
 
 The original request asked to "email-scrape a new Instagram page each day" and
 "start marketing them all on your own." Those specific tactics are **not run**,
@@ -81,6 +97,65 @@ A repeatable ~30-min/day loop that grows real, permission-based audiences:
   a legitimate, ownable email list. (Tech: a `NewsletterSubscriber` model +
   `/api/subscribe`, or a hosted ESP form. Not built yet — see Backlog.)
 - **Nurture:** short welcome sequence that leads to the paid offer.
+
+---
+
+## 📇 Legal lead & contact collection playbook
+
+The compliant, effective ways to collect the contact info the routine was after
+— ranked roughly by leverage. All of these use consent or official channels, so
+they're legal and they don't burn your domain.
+
+### A. Consent-based (you own it) — best for B2C brands
+1. **Opt-in lead magnets** (the backbone). Free PDF/checklist behind a
+   **double opt-in** form; the subscriber consents and can unsubscribe. Fully
+   CAN-SPAM / GDPR / CASL compliant.
+2. **On-site capture with a clear notice:** newsletter box, exit-intent, and
+   "content upgrades" on high-traffic pages. Always show a privacy line + honor
+   one-click unsubscribe.
+3. **Webinars / free workshops / waitlists:** registration = consented contact.
+4. **Referral program:** existing customers/leads refer others (incentivized).
+
+### B. Official platform lead tools (paid, consent built in)
+5. **Meta / Instagram Lead Ads** — this is the *legal version of "getting leads
+   from Instagram."* People submit their info voluntarily through Instagram's own
+   form; you receive it via the official API. No scraping, fully ToS-compliant.
+6. **LinkedIn Lead Gen Forms** — ideal for **AI Systems** (reaching dentists /
+   practice managers). Prospect taps "submit," their business contact flows to you.
+7. **Google Ads / search + landing page** — capture buyer-intent traffic.
+
+### C. Licensed B2B data + public business info — best for AI Systems (dental)
+> B2B outreach to a *business's* published contact point is treated differently
+> from emailing a private individual, but you still must identify yourself,
+> include a physical mailing address, and honor opt-outs (CAN-SPAM). EU/Canada
+> (GDPR/CASL) are stricter — get consent or a clear legitimate-interest basis.
+8. **Licensed B2B databases** — Apollo.io, ZoomInfo, Lusha, Hunter.io,
+   Clearbit. They license the data and handle sourcing compliance; you get
+   verified *business* contacts to run relevant, opt-out-respecting outreach.
+9. **Public business directories via official APIs** — Google Business Profile /
+   Places API, Yelp, state dental-board license registries, ADA directories.
+   These are *business* listings accessed through sanctioned channels — not
+   personal-account scraping.
+10. **Practice websites' public "Contact us" pages** — a dental office publishes
+    a business email precisely to be contacted; relevant, identified, opt-out-
+    respecting B2B outreach there is legitimate. (Still not bulk scraping.)
+
+### D. Warm / earned (no data collection needed to start)
+11. **Creator collaborations & affiliates** — partner with the 10k+ niche
+    accounts you'd have targeted; their audience opts into *your* funnel via a
+    link. You gain consented subscribers, the creator gets paid/affiliate cut.
+12. **Community participation** — genuinely help in the right subreddits/groups;
+    interested people click through and opt in themselves.
+
+### Compliance checklist (applies to every method above)
+- ✅ Consent (B2C) or documented legitimate-interest/B2B basis before emailing.
+- ✅ Every email: real sender identity + physical mailing address + working,
+  honored unsubscribe (CAN-SPAM; honor within 10 days).
+- ✅ Stricter rules for EU (GDPR — usually explicit consent) and Canada (CASL —
+  express/implied consent required *before* sending).
+- ✅ Use official APIs and ad platforms; never automated scraping (ToS + domain
+  reputation).
+- ✅ Keep proof of how/when each contact opted in.
 
 ---
 
@@ -159,3 +234,18 @@ A repeatable ~30-min/day loop that grows real, permission-based audiences:
   built yet. See Backlog.
 - **Learning:** the fastest real money here is following up on the consented
   `IntakeSubmission` leads for AI Systems, not scraping cold contacts.
+
+### 2026-09-15 — Owner made "no scraping" a hard rule + added legal collection playbook
+- Owner explicitly directed: stop the scraping approach; collect lead/contact
+  info only via legal means. Added a **HARD RULE** at the top of this file and a
+  full **Legal lead & contact collection playbook** (consent-based capture,
+  official Meta/LinkedIn lead-ad tools, licensed B2B databases + public business
+  info for the dental agency, and warm/affiliate channels), each with a
+  compliance checklist.
+- **Note for owner:** the recurring daily task's *stored prompt* in the web
+  scheduler still says "email-scrape Instagram." This file can't edit that; to
+  retire it fully, edit or delete the scheduled task in the Claude Code web app.
+  Until then, this file's HARD RULE governs each run's actual behavior.
+- **Recommended next legal lead source to wire first:** Instagram/Meta Lead Ads
+  or LinkedIn Lead Gen Forms → landing page opt-in → double opt-in list. This is
+  the compliant, higher-ROI replacement for the Instagram scrape.
