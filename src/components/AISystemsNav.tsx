@@ -4,6 +4,7 @@ const SUB_LINKS = [
   { href: "/ai-systems", label: "Overview" },
   { href: "/ai-systems/systems", label: "Systems" },
   { href: "/ai-systems/industries", label: "Industries" },
+  { href: "/ai-systems/revenue-calculator", label: "Free Calculator" },
   { href: "/ai-systems/process", label: "Process" },
   { href: "/ai-systems/about", label: "About" },
 ];
@@ -69,6 +70,7 @@ export function AISystemsFooter() {
           <Link href="/ai-systems" className="hover:text-gray-400 transition-colors">Overview</Link>
           <Link href="/ai-systems/systems" className="hover:text-gray-400 transition-colors">Systems</Link>
           <Link href="/ai-systems/industries" className="hover:text-gray-400 transition-colors">Industries</Link>
+          <Link href="/ai-systems/revenue-calculator" className="hover:text-gray-400 transition-colors">Calculator</Link>
           <Link href="/ai-systems/process" className="hover:text-gray-400 transition-colors">Process</Link>
           <Link href="/ai-systems/about" className="hover:text-gray-400 transition-colors">About</Link>
           <Link href="/contact" className="hover:text-gray-400 transition-colors">Contact</Link>

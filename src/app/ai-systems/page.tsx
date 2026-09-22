@@ -188,12 +188,12 @@ export default function AISystemsPage() {
             >
               Apply for a system →
             </a>
-            <a
-              href="#how-it-works"
+            <Link
+              href="/ai-systems/revenue-calculator"
               className="inline-flex items-center justify-center font-semibold text-base px-8 py-4 rounded-xl border border-white/10 hover:border-white/25 text-gray-400 hover:text-white transition-all"
             >
-              See how it works
-            </a>
+              Calculate what you&apos;re losing →
+            </Link>
           </div>
 
           <p className="text-sm text-gray-500">From $1,497 setup + $297/mo · No long-term contracts · Cancel anytime</p>
