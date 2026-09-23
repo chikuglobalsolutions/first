@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Marketing/growth source of truth:** see [`GROWTH.md`](./GROWTH.md) for the per-brand
+> growth playbook, content, and outreach tracker. Keep revenue/marketing guidance there;
+> keep engineering guidance here.
+
 ## Commands
 
 ```bash
