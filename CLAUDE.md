@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Growth / marketing routine:** see [`GROWTH-TRACKER.md`](./GROWTH-TRACKER.md) — the source of
+> truth for the daily marketing routine across all Chiku brands (PromptEmpire, Chiku-Fit, AI
+> Systems, QRFlow). It records the strategy, daily log, and open blockers, and is updated each run.
+
 ## Commands
 
 ```bash
