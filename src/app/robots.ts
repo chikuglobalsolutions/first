@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/promptempire", "/chiku-fit", "/generate"],
+        allow: ["/", "/promptempire", "/chiku-fit", "/ai-systems", "/generate"],
         disallow: ["/api/", "/dashboard", "/login", "/verify"],
       },
     ],
