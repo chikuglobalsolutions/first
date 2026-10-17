@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -94,4 +94,21 @@ model IntakeSubmission {
   source          String?  @default("ai-systems-intake")
   status          String   @default("new")
   createdAt       DateTime @default(now())
+}
+
+model Purchase {
+  id                  String   @id @default(cuid())
+  stripeSessionId     String   @unique
+  stripeCustomerId    String?
+  stripePaymentIntent String?
+  email               String
+  amount              Int
+  currency            String   @default("usd")
+  productKey          String
+  productName         String
+  status              String   @default("paid")
+  createdAt           DateTime @default(now())
+
+  @@index([email])
+  @@index([stripeCustomerId])
 }

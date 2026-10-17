@@ -3,6 +3,7 @@ import QRCode from "qrcode";
 import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import { PLANS } from "@/lib/stripe";
 
 export async function POST(req: NextRequest) {
   try {
@@ -20,22 +21,25 @@ export async function POST(req: NextRequest) {
     const session = await getServerSession(authOptions);
     const userId = (session?.user as { id?: string })?.id;
 
+    let isPro = false;
+
     if (userId) {
       const user = await prisma.user.findUnique({ where: { id: userId } });
-      if (user?.plan === "free") {
+      const planKey = (user?.plan ?? "free") as keyof typeof PLANS;
+      const plan = PLANS[planKey] ?? PLANS.free;
+      isPro = planKey !== "free";
+
+      // qrLimit of -1 means unlimited (business tier)
+      if (plan.qrLimit !== -1) {
         const count = await prisma.qRCode.count({ where: { userId } });
-        if (count >= 5) {
+        if (count >= plan.qrLimit) {
           return NextResponse.json(
-            { error: "Free plan limit reached (5 QR codes). Please upgrade to Pro." },
+            { error: `${plan.name} plan limit reached (${plan.qrLimit} QR codes). Please upgrade.` },
             { status: 403 }
           );
         }
       }
     }
-
-    const isPro = userId
-      ? (await prisma.user.findUnique({ where: { id: userId } }))?.plan !== "free"
-      : false;
 
     const qrDataUrl = await QRCode.toDataURL(url, {
       width: size,

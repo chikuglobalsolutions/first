@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 
 type Plan = "free" | "pro" | "business";
 
@@ -122,7 +123,7 @@ export default function QRGenerator({ plan = "free" }: { plan?: Plan }) {
               <p className="text-sm font-semibold text-brand-900">Custom colors available on Pro</p>
               <p className="text-xs text-brand-700 mt-0.5">
                 Upgrade to add your brand colors and logo overlay.{" "}
-                <a href="/#pricing" className="underline font-medium">See plans →</a>
+                <Link href="/#pricing" className="underline font-medium">See plans →</Link>
               </p>
             </div>
           </div>
@@ -177,9 +178,9 @@ export default function QRGenerator({ plan = "free" }: { plan?: Plan }) {
             <div className="w-full bg-gray-50 border border-gray-100 rounded-xl p-4 text-center">
               <p className="text-sm text-gray-600">
                 Want to track how many times this QR is scanned?{" "}
-                <a href="/#pricing" className="text-brand-600 font-semibold underline">
+                <Link href="/#pricing" className="text-brand-600 font-semibold underline">
                   Upgrade to Pro →
-                </a>
+                </Link>
               </p>
             </div>
           )}

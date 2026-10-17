@@ -8,10 +8,11 @@ export async function generateStaticParams() {
   return INDUSTRIES.map((i) => ({ slug: i.slug }));
 }
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const ind = getIndustry(params.slug);
+  const { slug } = await params;
+  const ind = getIndustry(slug);
   if (!ind) return { title: "Industry not found" };
   return {
     title: `AI Systems for ${ind.name} — Chiku AI Systems`,
@@ -19,8 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function IndustryDetailPage({ params }: Props) {
-  const ind = getIndustry(params.slug);
+export default async function IndustryDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const ind = getIndustry(slug);
   if (!ind) notFound();
 
   const recommendedSystems = ind.recommendedSystems
